@@ -33,7 +33,7 @@ export const signUp = async (username, email, password, setUser, setError) => {
         if (data.error) {
             throw new Error("Account already exists");
         }
-        setUser(data.username);
+         setUser(data.username);
     } catch (error) {
         setError(error.message);
     }
@@ -48,22 +48,12 @@ export const signUp = async (username, email, password, setUser, setError) => {
 
 export const submitNewComponent = async (component) => {
     try {
-        // console.log(component)
         const response = await fetch(`${process.env.REACT_APP_REST_API}component`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                componentName: component.componentName,
-                type: component.type,
-                component: component.component,
-                option: component.option,
-                text: component.text,
-                formFields: component.formFields,
-                label: component.label,
-                src: component.src,
-                size: component.size
-            }),
+            body: JSON.stringify(component),
         });
+
         const data = await response.json();
         console.log(data);
         if (data.error) {
