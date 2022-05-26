@@ -1,0 +1,416 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai&family=Lora:ital@1&family=Montserrat:wght@400;600&display=swap');
+
+/* ### global css variables ### */
+:root {
+    /* colours */
+    --light-shades: #F3F7F8;
+    --pods: #A4B4CA;   
+    --pods1:#c5cfdd;
+    --main-colour: #3d78a1;
+    --primaryText: #293a57;
+    --warningText: #ff0000;
+
+    /* items that were in colour chart not used: 
+    --lightBlue:  #7f91da;
+    --dark-accent: #98AFC6;
+    --dark-shades: #538DDA;
+    */
+
+    /* fonts */
+    --mainHeaderFontFamily:'Montserrat', sans-serif;    
+    --introTextFontFamily: 'Lora', serif;
+    --paragraphFontFamily: 'Hind Madurai', sans-serif;
+    --mainHeaderH1FontSize: 64px;
+    --introTextPFontSize: 36px;
+    --otherHeadingsH2FontSize: 24px;
+    --paragraphFontSize: 20px;
+
+}
+
+body {
+    margin: 0;
+}
+
+h1 {
+    font-family: var(--mainHeaderFontFamily);
+    font-size: var(--mainHeaderH1FontSize);
+    color: var(--primaryText);
+    font-weight: 600px;
+}
+.introText{
+    font-family: var(--introTextFontFamily);
+    font-size: var(--introTextPFontSize);
+    color: var(--primaryText);
+    font-style: italic;
+    font-size: var(--introTextPFontSize);
+}
+h2, th {
+    font-family: var(--mainHeaderFontFamily);
+    font-size: var(--mainHeaderH1FontSize);
+    color: var(--primaryText);
+    font-size: var(--otherHeadingsH2FontSize); 
+    font-weight: 400px;
+    padding-left: 8px;
+}
+p, a, td, label, select, input {
+    font-family: var(--paragraphFontFamily);
+    font-size: var(--paragraphFontSize);
+    color: var(--primaryText);
+}
+
+td, th {
+    padding: 0.25em;
+}
+
+tbody tr:hover {
+    background-color: #A4B4CA;
+    cursor: pointer;
+}
+
+tr:nth-child(even) {
+    background-color: #c5cfdd;
+}
+
+.warningText {
+    color: red;
+}
+
+/* sidebar */
+#sidebar {
+    width: 10vw;
+    min-width: 200px;
+    height: 100vh;
+    background-color: var(--main-colour);
+    /* position: absolute; */
+    left: 0;
+    top: 0;
+    padding-top: 15px;
+    margin: 0;
+}
+#logoContainer {
+    padding-top: 3px;
+    margin-bottom:30px;
+    padding-left:15px;
+}
+#logo {
+    height: 4vh;
+    width: auto;
+}
+#sidebarMenu {
+    display: flex;
+    flex-direction: column;
+    height: 75vh;
+}
+#sidebarMenu a {
+    text-decoration: none;
+}
+.sideBarMenuOptions {
+    height: 60px;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    padding: 3px;
+    background-color: var(--pods);
+}
+.sideBarMenuOptions p {
+    font-size: 17px;
+}
+#sideBarMenuCreateComp {
+    background-color: var(--light-shades);
+}
+#supportIconContainer {
+    display: flex;
+    justify-content: center;
+}
+#supportIcon {
+    height: 5vh;
+    width: auto;    
+}
+
+#mainContainer {
+    display: flex;    
+}
+
+#mainBodyContainer {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 100vh;
+    padding: 2rem;
+}
+
+
+/* PODS - half pod*/
+
+.pod {
+    background-color: var(--pods);
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+.halfPod {
+    width: 36vw;
+}
+
+.podExpand {
+    height: fit-content;
+}
+
+.halfPodHeader {
+    height: 15%;
+}
+
+.podTableContainer {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    overflow: auto;
+    border-radius: 12px;
+}
+.podTable {
+    width:100%;
+    text-align: center;    
+    border-collapse: collapse;
+    white-space: nowrap;
+    overflow-x: scroll;
+}
+
+.podTable th {
+    font-size: 14px;
+    width: 43%;
+    background: #F3F7F8;
+    position: sticky;
+    top: 0;
+}
+.podTable td {
+    font-size: 14px;
+}
+.podTable td, .podTable th {
+    border: .5px dotted var(--primaryText);
+    }
+.podTable tr:first-child th {
+    border-top: 0;        
+  }
+.podTable tr:last-child td {
+  border-bottom: 0;
+    }
+.podTable tr td:first-child,
+.podTable tr th:first-child {
+  border-left: 0;
+    }
+.podTable tr td:last-child,
+.podTable tr th:last-child {
+  border-right: 0;
+    }
+
+/* 2 half pods alongside each other */
+.formPodsContainer {
+    display: flex;
+    justify-content: space-between;
+}
+    
+/* PODS - full pod */ 
+.fullPodContainer {
+    display: flex;
+    justify-content: center;
+}
+.fullPod {
+    width: 72vw;
+    height: fit-content;
+    background-color: var(--pods);
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.fullPodHeader {
+    height: 8%;
+}
+
+.tablePod {
+    height: 60%;
+}
+
+/* PODS specific styling */
+#recentComponentsBodyContainer {
+    display: flex;
+    justify-content: center;
+    height: 75%;
+    width: 100%;
+}
+
+#recentComponentsBody, #componentSelect {
+    width: 95%;
+    background-color: var(--light-shades);
+    border-radius: 12px;
+}
+.formBuildContainer {
+    display: flex;
+    justify-content: center;
+    height: 82%;
+}
+#formBuild {
+    width: 95%;
+    background-color: var(--light-shades);
+    border-radius: 12px;
+    height: 100%;
+}
+#supportBodyContainer {
+padding: 12px;
+height: 86%;
+width: 100%;
+}
+.supportComponentContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 92%;
+}
+
+.supportComponentContainer p, .supportComponentContainer a{
+   font-size: 15px;
+}
+.supportComponentsBody {
+    width: 95%;
+    background-color: var(--light-shades);
+    border-radius: 12px;
+    height: 92%;
+    overflow-x: scroll;
+}
+#supportMainContainer {
+    padding-left: 15px;
+    padding-right:15px;
+    padding-top: 15px;
+}
+
+/* MM ADDED STYLES */
+
+.inputGroup {
+    margin-bottom: 0.5rem;
+}
+
+.inputGroupLine {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputGroupStack {
+    display: block;   
+}
+
+.inputGroupLine input, 
+.inputGroupLine textarea,
+.inputGroupLine select,
+#htmlDisplay {
+    margin: 0 0.5rem;
+    width: 85%;
+}
+
+.inputGroupStack input, 
+.inputGroupStack textarea,
+.inputGroupStack select,
+#htmlDisplay {
+    margin: 0;
+    width: 100%;
+}
+
+#htmlDisplay {
+    background-color: white;
+    border: 1px solid black;
+}
+
+button {
+    border: none;
+    border-radius: 50px;
+    padding: 0.25rem 1rem;
+    font-family: var(--paragraphFontFamily);
+    font-size: var(--paragraphFontSize);
+    box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.5);
+    margin: 0.5rem 0;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: right;
+
+}
+
+/* Create Form */
+.formListRowContainer {
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+.formButton {
+    border: none !important;
+    background-color:transparent;
+    box-shadow: none !important;
+    cursor:pointer;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 15px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 15px;     
+}
+.formButton svg {
+    font-size: 25px;
+}
+.dualButtonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.dualButtons {
+    font-size: 15px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0.5em 1em;
+
+}
+
+li {
+    padding-bottom: 0.5em;
+}
+
+#componentSelect a {
+    text-decoration: none;
+}
+
+#componentSelect a:hover {
+    cursor: pointer;
+    color: var(--main-colour);
+}
+
+.back-arrow {
+    font-size: 1.5rem;
+    color: var(--primaryText);
+}
+
+.textButton:hover, .formButton svg:hover {
+    color: var(--main-colour);
+    cursor: pointer;
+}
+
+.textButton:hover {
+    color: var(--main-colour);
+    cursor: pointer;
+
+}
+
+.fullWidthTable {
+    width: 100%;
+}
+.fullWidthTable td {
+    text-align: center;
+}
+
+#addFieldsSubForm {
+    border: var(--primaryText) solid 1px;
+    border-radius: 15px;
+    margin: 0.5em;
+    padding: 0 1em 1em 1em;
+    background-color: var(--pods1);
+}
