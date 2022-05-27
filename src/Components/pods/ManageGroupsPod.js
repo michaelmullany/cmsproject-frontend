@@ -1,9 +1,12 @@
+import { listAllComponents } from "../../utils"
+
 export const ManageGroupsPod = () => {
+
 
     return (
         <div className="pod fullPod tablePod">
             <div className="halfPodHeader">
-            <h2>Groups</h2>
+            <h2>Components</h2>
             </div>
             <div id="recentComponentsBodyContainer">
                 <div id="recentComponentsBody">
