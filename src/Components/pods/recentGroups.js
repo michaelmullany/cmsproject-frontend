@@ -11,127 +11,27 @@ export const RecentGroups = () => {
                         <table className="podTable">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Type</th>
+                                    <th>Name</th>                                
                                     <th>Modified</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>Example Name</td>
-                                    <td>Text box</td>
                                     <td>01/01/2022</td>
                                 </tr>
                                 <tr>
                                     <td>Example Name 2</td>
-                                    <td>Button</td>
                                     <td>01/02/2022</td>
                                 </tr>
                                 <tr>
                                     <td>Example Name 2</td>
-                                    <td>Button</td>
                                     <td>01/02/2022</td>
                                 </tr>
                                 <tr>
                                     <td>Example Name 2</td>
-                                    <td>Button</td>
                                     <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
+                                </tr>                                
                             </tbody>
                         </table>
                     </div>
