@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { CgArrowLeft } from "react-icons/cg";
 import { submitNewComponent } from '../../utils';
+import { GroupField } from './Fields/GroupField';
 
-export const ButtonPod = ({ setAppState }) => {
+export const ButtonPod = ({ setAppState, groupName }) => {
 
     const [buttonName, setButtonName] = useState();
     const [buttonType, setButtonType] = useState();
@@ -27,6 +28,7 @@ export const ButtonPod = ({ setAppState }) => {
                 <CgArrowLeft className="back-arrow textButton" onClick={() => setAppState("Welcome")}/>
                 <h2>Button</h2>
                 <form onSubmit={submitHandler}>
+                    <GroupField groupName={groupName} />  
                     <div className="inputGroup inputGroupLine">
                         <label htmlFor="buttonName">Name: </label>
                         <input type="text" id="buttonName" name="buttonName" onChange={(e) => setButtonName(e.target.value)}/>

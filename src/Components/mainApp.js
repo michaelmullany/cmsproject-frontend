@@ -12,7 +12,6 @@ import { ManageGroupsPod } from "./pods/ManageGroupsPod";
 export const MainApp = () => {
 
     const [appState, setAppState] = useState();
-    const [appMode, setAppMode] = useState();
     const [addingGroup, setAddingGroup] = useState();
     const [groupName, setGroupName] = useState();
 
@@ -21,7 +20,7 @@ export const MainApp = () => {
             <Sidebar setAppState={setAppState} />
             <main id="mainBodyContainer">
                 {
-                    (!appState || appState == "Welcome") &&
+                    (!appState || appState === "Welcome") &&
                     <>
                         <RecentGroups />
                         <AddGroup 
@@ -34,27 +33,27 @@ export const MainApp = () => {
                     </>
                 }
                 {
-                    appState=="ManageGroups" &&
-                    <ManageGroupsPod setAppState={setAppState} />
+                    appState==="ManageGroups" &&
+                    <ManageGroupsPod setAppState={setAppState}/>
                 }
                 {
-                    appState=="AddTextbox" &&
-                    <TextboxPod setAppState={setAppState} />
+                    appState==="AddTextbox" &&
+                    <TextboxPod setAppState={setAppState} groupName={groupName} />
                 }
                 {
-                    appState=="AddBanner" &&
-                    <BannerPod setAppState={setAppState} />                
+                    appState==="AddBanner" &&
+                    <BannerPod setAppState={setAppState} groupName={groupName} />                
                 }
                 {
-                    appState=="AddMedia" &&
-                    <MediaPod setAppState={setAppState} />                
+                    appState==="AddMedia" &&
+                    <MediaPod setAppState={setAppState} groupName={groupName} />                
                 }              {
-                    appState=="AddButton" &&
-                    <ButtonPod setAppState={setAppState} />                
+                    appState==="AddButton" &&
+                    <ButtonPod setAppState={setAppState} groupName={groupName} />                
                 }
                 {
-                    appState=="AddForm" && 
-                    <NewFormPod setAppState={setAppState}/>
+                    appState==="AddForm" && 
+                    <NewFormPod setAppState={setAppState} groupName={groupName} />
                 }
             </main>
         </div>

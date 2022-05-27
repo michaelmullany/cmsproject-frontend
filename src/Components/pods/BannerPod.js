@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { CgArrowLeft } from "react-icons/cg";
 import { submitNewComponent } from '../../utils';
+import { GroupField } from './Fields/GroupField';
 
-export const BannerPod = ({ setAppState }) => {
+export const BannerPod = ({ setAppState, groupName }) => {
 
     const [bannerName, setBannerName] = useState();
     const [bannerType, setBannerType] = useState();
@@ -25,6 +26,7 @@ export const BannerPod = ({ setAppState }) => {
                 <CgArrowLeft className="back-arrow textButton" onClick={() => setAppState("Welcome")}/>
                 <h2>Banner</h2>
                 <form onSubmit={submitHandler}>
+                    <GroupField groupName={groupName} />               
                     <div className="inputGroup inputGroupLine">
                         <label htmlFor="bannerName">Name: </label>
                         <input type="text" id="bannerName" name="bannerName" onChange={(e) => setBannerName(e.target.value)}/>

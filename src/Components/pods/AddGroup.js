@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { CgArrowLeft } from "react-icons/cg";
-import { IconContext } from "react-icons";
 
 export const AddGroup = ({ setAppState, addingGroup, setAddingGroup, groupName, setGroupName }) => {
 

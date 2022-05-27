@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { CgArrowLeft } from "react-icons/cg";
 import { submitNewComponent } from '../../utils';
+import { GroupField } from './Fields/GroupField';
 
-export const MediaPod = ({ setAppState }) => {
+export const MediaPod = ({ setAppState, groupName }) => {
 
     const [mediaName, setMediaName] = useState();
     const [mediaType, setMediaType] = useState();
@@ -29,6 +30,7 @@ export const MediaPod = ({ setAppState }) => {
                 <CgArrowLeft className="back-arrow textButton" onClick={() => setAppState("Welcome")}/>
                 <h2>Media</h2>
                 <form onSubmit={submitHandler}>
+                    <GroupField groupName={groupName} />  
                     <div className="inputGroup inputGroupLine">
                         <label htmlFor="mediaName">Name: </label>
                         <input type="text" id="mediaName" name="mediaName" onChange={(e) => setMediaName(e.target.value)}/>

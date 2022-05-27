@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { FiChevronUp, FiChevronDown } from "react-icons/fi";
 import { CgArrowLeft } from "react-icons/cg";
 import { submitNewComponent } from '../../utils';
+import { GroupField } from './Fields/GroupField';
 
 
-export const NewFormPod = ({ setAppState }) => {
+export const NewFormPod = ({ setAppState, groupName }) => {
 
     const [formName, setFormName] = useState();
     const [fieldName, setFieldName] = useState("blank");
@@ -35,13 +36,13 @@ export const NewFormPod = ({ setAppState }) => {
     }
 
     const formButtonHandler = (param, index) => {
-        if (param == "down") {
+        if (param === "down") {
             let tempArray = [...fieldList];
             let tempItemToBeMoved = tempArray.slice(index,index + 1);
             let tempSliceItem = [...tempArray].slice(0,index).concat(tempArray.slice(index + 1,))
             tempSliceItem.splice(index + 1,0, ...tempItemToBeMoved)
             setFieldList(tempSliceItem)            
-        } if (param == "up") {
+        } if (param === "up") {
             let tempArray = [...fieldList];
             let tempItemToBeMoved = tempArray.slice(index,index + 1);
             let tempSliceItem = [...tempArray].slice(0,index).concat(tempArray.slice(index + 1,))
@@ -55,7 +56,8 @@ export const NewFormPod = ({ setAppState }) => {
             <div className="pod halfPod podExpand">
                 <div className="halfPodHeader">              
                     <CgArrowLeft className="back-arrow textButton" onClick={() => setAppState("Welcome")}/>
-                    <form onSubmit={submitHandler}>                     
+                    <form onSubmit={submitHandler}>   
+                        <GroupField groupName={groupName} />                  
                         <div className="inputGroup">
                             <label htmlFor="formName">Form Name: </label>
                             <input type="text" id="formName" name="formName" onChange={(e) => setFormName(e.target.value)} required/>
@@ -101,12 +103,12 @@ export const NewFormPod = ({ setAppState }) => {
                         <table className="fullWidthTable">
                         <tr><th>Order</th><th>Field Name</th><th>Field Type</th></tr>
                         {fieldList.map((x,index) => {
-                            if (index == 0) {
+                            if (index === 0) {
                                 return <tr key={index}>
                                     <td><button className="formButton" onClick={() => formButtonHandler("down", index)}><FiChevronDown /></button></td>
                                     <td><p>{x.name}</p></td><td><p>{x.type}</p></td>
                                     </tr>
-                            } else if (index == (fieldList.length-1)) {                                
+                            } else if (index === (fieldList.length-1)) {                                
                                 return <tr key={index}>
                                     <td><button className="formButton" onClick={() => formButtonHandler("up", index)}><FiChevronUp /></button></td>
                                     <td><p>{x.name}</p></td><td><p>{x.type}</p></td>
