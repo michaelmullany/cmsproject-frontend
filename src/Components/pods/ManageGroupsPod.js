@@ -1,8 +1,16 @@
-import { listAllComponents } from "../../utils"
+import {useState, useEffect} from 'react'
+import { postComponents } from "../../utils";
+
 
 export const ManageGroupsPod = () => {
-
-
+    const [existingComponents, setExistingComponents] = useState([]);
+    
+    
+    useEffect(() => {
+        postComponents("testN", setExistingComponents);
+    }, []);
+        
+  
     return (
         <div className="pod fullPod tablePod">
             <div className="halfPodHeader">
@@ -20,121 +28,15 @@ export const ManageGroupsPod = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Example Name</td>
-                                    <td>Text box</td>
-                                    <td>01/01/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>Button</td>
-                                    <td>01/02/2022</td>
-                                </tr>
+                               
+                                {existingComponents.map(x => {
+                                    return (<tr>
+                                            <td>{x.componentName}</td>
+                                            <td>{x.component}</td>
+                                            <td>"01/01/2022"</td>
+                                            </tr>
+                                    )
+                                })}                                
                             </tbody>
                         </table>
                     </div>

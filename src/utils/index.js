@@ -64,15 +64,29 @@ export const submitNewComponent = async (component) => {
     }
 }
 
-export const listAllComponents = async (componentName) => {
+// export const listAllComponents = async (setter) => {
+//     try {
+//         const response = await fetch(`${process.env.REACT_APP_REST_API}component`, {
+//             method: "GET",
+//             // headers: { "Content-Type": "application/json" },
+//             // body: JSON.stringify(componentName)
+//         });
+//         const data = await response.json();
+//         setter(data);
+//     } catch (err) {
+//         console.log(err.message);
+//     }
+// }
+
+export const postComponents = async (componentName, setter) => {
     try {
-        const response = await fetch(`${process.env.REACT_APP_REST_API}component`, {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-            body: componentName
-        });
-        const data = await response.json();
-        console.log(data)
+        const response = await fetch(`${process.env.REACT_APP_REST_API}list`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({componentName})
+     });
+     const data = await response.json();
+     setter(data);
     } catch (err) {
         console.log(err.message);
     }
