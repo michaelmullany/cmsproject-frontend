@@ -63,3 +63,17 @@ export const submitNewComponent = async (component) => {
         console.log(err.message)
     }
 }
+
+export const listAllComponents = async (componentName) => {
+    try {
+        const response = await fetch(`${process.env.REACT_APP_REST_API}component`, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+            body: componentName
+        });
+        const data = await response.json();
+        console.log(data)
+    } catch (err) {
+        console.log(err.message);
+    }
+}
