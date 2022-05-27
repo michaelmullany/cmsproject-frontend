@@ -12,7 +12,7 @@ import { ManageGroupsPod } from "./pods/ManageGroupsPod";
 export const MainApp = () => {
 
     const [appState, setAppState] = useState();
-    const [addingGroup, setAddingGroup] = useState();
+
     const [groupName, setGroupName] = useState();
 
     return (
@@ -25,8 +25,6 @@ export const MainApp = () => {
                         <RecentGroups />
                         <AddGroup 
                             setAppState={setAppState}
-                            addingGroup={addingGroup}
-                            setAddingGroup={setAddingGroup}
                             groupName={groupName}
                             setGroupName={setGroupName}
                         />
