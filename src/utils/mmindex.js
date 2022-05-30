@@ -21,3 +21,15 @@ export const submitNewGroup = async (newGroup, setFeedback) => {
         });
     }
 }
+
+export const getGroupsList = async (setter) => {
+    try {
+        const response = await fetch(`${process.env.REACT_APP_REST_API}group`, {
+            method: "GET"
+        });
+        const data = await response.json();
+        setter(data.groups);
+    } catch (err) {
+        console.log(err);
+    }
+}

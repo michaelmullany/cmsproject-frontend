@@ -1,20 +1,21 @@
 import { useState } from "react";
 import { CgArrowLeft } from "react-icons/cg";
-import { submitNewGroup } from "../../utils/mmindex";
+import { submitNewGroup, getGroupsList } from "../../utils/mmindex";
 import { Feedback } from "./Feedback";
 
-export const AddGroup = ({ groupName, setGroupName }) => {
+export const AddGroup = ({ groupName, setGroupName, setExistingGroups }) => {
 
     const [addingGroup, setAddingGroup] = useState();
     const [feedback, setFeedback] = useState();
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
         const newGroup = {
             groupName,
             dateModified: new Date()
         }
-        submitNewGroup(newGroup, setFeedback);
+        await submitNewGroup(newGroup, setFeedback);
+        await getGroupsList(setExistingGroups);
     }
 
     return (
@@ -35,7 +36,7 @@ export const AddGroup = ({ groupName, setGroupName }) => {
                             <input type="text" id="groupNameInput" name="groupNameInput" value={groupName} onChange={(e) => setGroupName(e.target.value)}/>
                         </div>
                         {feedback && <Feedback feedback={feedback} />}
-                        <button type="submit" disabled={(!groupName)}>Submit</button>
+                        <button className="textButton" type="submit" disabled={(!groupName)}>Submit</button>
                     </form>                
                 }
                 {/* {

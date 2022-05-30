@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getGroupsList } from "../utils/mmindex"
 import { Sidebar } from "./Sidebar"
 import { RecentGroups } from "./pods/recentGroups"
 import { AddGroup } from './pods/AddGroup'
@@ -8,12 +9,18 @@ import { MediaPod } from './pods/MediaPod'
 import { ButtonPod } from "./pods/ButtonPod";
 import { NewFormPod } from './pods/NewFormPod'
 import { ManageGroupsPod } from "./pods/ManageGroupsPod";
+import { SelectedGroup } from "./pods/SelectedGroup";
 
 export const MainApp = () => {
 
     const [appState, setAppState] = useState();
+    const [groupName, setGroupName] = useState("");
+    const [existingGroups, setExistingGroups] = useState([]);
+    const [selectedGroup, setSelectedGroup] = useState("");
 
-    const [groupName, setGroupName] = useState();
+    useEffect(() => {
+        getGroupsList(setExistingGroups);
+    }, []);
 
     return (
         <div id="mainContainer">
@@ -22,12 +29,17 @@ export const MainApp = () => {
                 {
                     (!appState || appState === "Welcome") &&
                     <>
-                        <RecentGroups />
+                        <RecentGroups 
+                            existingGroups={existingGroups}
+                            setSelectedGroup={setSelectedGroup}
+                        />
                         <AddGroup 
                             setAppState={setAppState}
                             groupName={groupName}
                             setGroupName={setGroupName}
+                            setExistingGroups={setExistingGroups}
                         />
+                        {selectedGroup && <SelectedGroup groupName={groupName} setGroupName={setGroupName} selectedGroup={selectedGroup} />}
                     </>
                 }
                 {
