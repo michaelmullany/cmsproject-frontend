@@ -1,8 +1,15 @@
-export const RecentGroups = ({ existingGroups, setSelectedGroup }) => {
+import { AiFillDelete } from "react-icons/ai";
+import { deleteGroup, getGroupsList } from "../../utils/mmindex";
+
+export const RecentGroups = ({ existingGroups, setExistingGroups, setSelectedGroup }) => {
 
     const selectGroupHandler = group => {
-        console.log(group);
         setSelectedGroup(group);
+    }
+
+    const deleteButtonHandler = async(id) => {
+        await deleteGroup({_id: id});
+        await getGroupsList(setExistingGroups);
     }
 
     return (
@@ -18,14 +25,16 @@ export const RecentGroups = ({ existingGroups, setSelectedGroup }) => {
                                 <tr>
                                     <th>Name</th>                                
                                     <th>Modified</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {existingGroups.map(group => {
                                     return (
-                                        <tr key={group._id} onClick={() => {selectGroupHandler(group)}}>
-                                            <td>{group.groupName}</td>
-                                            <td>{group.dateModified}</td>
+                                        <tr key={group._id}>
+                                            <td onClick={() => {selectGroupHandler(group)}}>{group.groupName}</td>
+                                            <td onClick={() => {selectGroupHandler(group)}}>{group.dateModified}</td>
+                                            <td><button className="noStyleButton" onClick={() => {deleteButtonHandler(group._id)}}><AiFillDelete /></button></td>
                                         </tr>
                                     )
                                 })} 

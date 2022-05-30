@@ -1,21 +1,52 @@
-export const SelectedGroup = ({ groupName, setGroupName, selectedGroup }) => {
+import { useState, useEffect } from "react";
+import { getGroupsList, updateGroup, deleteGroup } from "../../utils/mmindex"
+import { CgArrowLeft } from "react-icons/cg";
 
-    console.log(selectedGroup);
+
+export const SelectedGroup = ({ selectedGroup, setSelectedGroup, setExistingGroups }) => {
+
+    const [newName, setNewName] = useState(selectedGroup.groupName);
+
+    const updateHandler = async (e) => {
+        e.preventDefault();
+        if (newName === selectedGroup.groupName) return;
+        await updateGroup({
+            filter: {
+                _id: selectedGroup._id
+            },
+            update: {
+                groupName: newName,
+                dateModified: new Date()
+            }
+        });
+        await getGroupsList(setExistingGroups);
+        setSelectedGroup(undefined);
+    }
+
+    const deleteHandler = async (e) => {
+        e.preventDefault();
+        await deleteGroup({_id: selectedGroup._id});
+        await getGroupsList(setExistingGroups);
+        setSelectedGroup(undefined);
+    }
 
     return (
         <div className="pod fullPod podExpand">
             <div className="halfPodHeader">
+                <div>
+                    <CgArrowLeft className="back-arrow textButton" onClick={() => {setSelectedGroup(undefined)}} />
+                </div>
                 <form>
                     <div className="inputGroup inputGroupStack">
                         <label id="groupNameLabel" htmlFor="groupNameLabel">Group Name</label>
-                        <input type="text" id="groupNameLabel" name="groupNameLabel" value={selectedGroup.groupName} onChange={(e) => setGroupName(e.target.value)}/>
+                        <input type="text" id="groupNameLabel" name="groupNameLabel" value={newName} onChange={(e) => setNewName(e.target.value)}/>
                     </div>
                     <p>Components List</p>
                     <p>...</p>
                     <p>...</p>
                     <p>...</p>
-                    <button className="textButton" type="submit">Update</button>
-                    <button className="textButton deleteButton" type="button">Delete</button>
+                    <button className="textButton" onClick={updateHandler} type="submit" disabled={newName==""||newName==selectedGroup.groupName}>Update</button>
+                    <button className="textButton deleteButton" onClick={deleteHandler} type="button">Delete</button>
                 </form>                
             </div>
         </div>

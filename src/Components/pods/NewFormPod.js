@@ -5,8 +5,9 @@ import { submitNewComponent } from '../../utils';
 import { GroupField } from './Fields/GroupField';
 
 
-export const NewFormPod = ({ setAppState, groupName }) => {
+export const NewFormPod = ({ setAppState, existingGroups }) => {
 
+    const [group, setGroup] = useState();
     const [formName, setFormName] = useState();
     const [fieldName, setFieldName] = useState("blank");
     const [fieldType, setFieldType] = useState("field");
@@ -14,12 +15,11 @@ export const NewFormPod = ({ setAppState, groupName }) => {
 
     const addFieldHandler = (e) => {
         e.preventDefault();
-        console.log(fieldName)
-        console.log(fieldType)
         let tempObj = {
-            name: fieldName,
-            type: fieldType
+            fieldName,
+            fieldType
         }
+        console.log(tempObj);
         let tempFieldListArray = [...fieldList];
         tempFieldListArray.push(tempObj)
         setFieldList(tempFieldListArray)
@@ -28,7 +28,8 @@ export const NewFormPod = ({ setAppState, groupName }) => {
     const submitHandler = (e) => {
         e.preventDefault();
         let component = {
-            name: formName,
+            assignedToGroup: group,
+            componentName: formName,
             component: "form",
             formFields: fieldList,
         }
@@ -55,9 +56,9 @@ export const NewFormPod = ({ setAppState, groupName }) => {
         <div id="mainBodyContainer">
             <div className="pod halfPod podExpand">
                 <div className="halfPodHeader">              
-                    <CgArrowLeft className="back-arrow textButton" onClick={() => setAppState("Welcome")}/>
+                    <CgArrowLeft className="back-arrow textButton" onClick={() => setAppState("CreateComponent")}/>
                     <form onSubmit={submitHandler}>   
-                        <GroupField groupName={groupName} />                  
+                        <GroupField setGroup={setGroup} existingGroups={existingGroups} />                 
                         <div className="inputGroup">
                             <label htmlFor="formName">Form Name: </label>
                             <input type="text" id="formName" name="formName" onChange={(e) => setFormName(e.target.value)} required/>
@@ -97,34 +98,36 @@ export const NewFormPod = ({ setAppState, groupName }) => {
                     <CgArrowLeft className="back-arrow textButton" onClick={() => setAppState("Welcome")}/>
                     <h2>Form Fields</h2>
                 </div>
-                <div class="formBuildContainer">
+                <div className="formBuildContainer">
                     <div id="formBuild">
                         
                         <table className="fullWidthTable">
-                        <tr><th>Order</th><th>Field Name</th><th>Field Type</th></tr>
-                        {fieldList.map((x,index) => {
-                            if (index === 0) {
+                        <thead><tr><th>Order</th><th>Field Name</th><th>Field Type</th></tr></thead>
+                        <tbody>
+                            {fieldList.map((x,index) => {
+                                if (index === 0) {
+                                    return <tr key={index}>
+                                        <td><button className="formButton" onClick={() => formButtonHandler("down", index)}><FiChevronDown /></button></td>
+                                        <td><p>{x.fieldName}</p></td><td><p>{x.fieldType}</p></td>
+                                        </tr>
+                                } else if (index === (fieldList.length-1)) {                                
+                                    return <tr key={index}>
+                                        <td><button className="formButton" onClick={() => formButtonHandler("up", index)}><FiChevronUp /></button></td>
+                                        <td><p>{x.fieldName}</p></td><td><p>{x.fieldType}</p></td>
+                                        </tr>
+                                } else {
                                 return <tr key={index}>
-                                    <td><button className="formButton" onClick={() => formButtonHandler("down", index)}><FiChevronDown /></button></td>
-                                    <td><p>{x.name}</p></td><td><p>{x.type}</p></td>
-                                    </tr>
-                            } else if (index === (fieldList.length-1)) {                                
-                                return <tr key={index}>
-                                    <td><button className="formButton" onClick={() => formButtonHandler("up", index)}><FiChevronUp /></button></td>
-                                    <td><p>{x.name}</p></td><td><p>{x.type}</p></td>
-                                    </tr>
-                            } else {
-                            return <tr key={index}>
+                                    
+                                    <td><div className="dualButtonContainer">
+                                            <button className="formButton dualButtons" onClick={() => formButtonHandler("up", index)}><FiChevronUp /></button>
+                                            <button className="formButton dualButtons" onClick={() => formButtonHandler("down", index)}><FiChevronDown /></button>
+                                    </div></td>
+                                    <td><p>{x.fieldName}</p></td><td><p>{x.fieldType}</p></td>
+                                    </tr> 
+                                }
                                 
-                                <td><div className="dualButtonContainer">
-                                        <button className="formButton dualButtons" onClick={() => formButtonHandler("up", index)}><FiChevronUp /></button>
-                                        <button className="formButton dualButtons" onClick={() => formButtonHandler("down", index)}><FiChevronDown /></button>
-                                </div></td>
-                                <td><p>{x.name}</p></td><td><p>{x.type}</p></td>
-                                </tr> 
-                            }
-                            
-                        })}
+                            })}
+                        </tbody>
                         </table>
                         
                     </div>

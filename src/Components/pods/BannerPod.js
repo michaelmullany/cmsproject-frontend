@@ -3,8 +3,9 @@ import { CgArrowLeft } from "react-icons/cg";
 import { submitNewComponent } from '../../utils';
 import { GroupField } from './Fields/GroupField';
 
-export const BannerPod = ({ setAppState, groupName }) => {
+export const BannerPod = ({ setAppState, existingGroups }) => {
 
+    const [group, setGroup] = useState();
     const [bannerName, setBannerName] = useState();
     const [bannerType, setBannerType] = useState();
     const [bannerText, setBannerText] = useState();
@@ -12,7 +13,8 @@ export const BannerPod = ({ setAppState, groupName }) => {
     const submitHandler = (e) => {
         e.preventDefault();
         let component = {
-            name: bannerName,
+            assignedToGroup: group,
+            componentName: bannerName,
             component: "banner",
             option: bannerType,
             text: bannerText,
@@ -23,10 +25,10 @@ export const BannerPod = ({ setAppState, groupName }) => {
     return (
         <div className="pod fullPod podExpand">
             <div className="halfPodHeader">
-                <CgArrowLeft className="back-arrow textButton" onClick={() => setAppState("Welcome")}/>
+                <CgArrowLeft className="back-arrow textButton" onClick={() => setAppState("CreateComponent")}/>
                 <h2>Banner</h2>
                 <form onSubmit={submitHandler}>
-                    <GroupField groupName={groupName} />               
+                    <GroupField setGroup={setGroup} existingGroups={existingGroups} />             
                     <div className="inputGroup inputGroupLine">
                         <label htmlFor="bannerName">Name: </label>
                         <input type="text" id="bannerName" name="bannerName" onChange={(e) => setBannerName(e.target.value)}/>

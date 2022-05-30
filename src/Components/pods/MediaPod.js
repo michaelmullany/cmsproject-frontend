@@ -3,8 +3,9 @@ import { CgArrowLeft } from "react-icons/cg";
 import { submitNewComponent } from '../../utils';
 import { GroupField } from './Fields/GroupField';
 
-export const MediaPod = ({ setAppState, groupName }) => {
+export const MediaPod = ({ setAppState, existingGroups }) => {
 
+    const [group, setGroup] = useState();
     const [mediaName, setMediaName] = useState();
     const [mediaType, setMediaType] = useState();
     const [mediaSource, setMediaSource] = useState();
@@ -14,7 +15,8 @@ export const MediaPod = ({ setAppState, groupName }) => {
     const submitHandler = (e) => {
         e.preventDefault();
         let component = {
-            name: mediaName,
+            assignedToGroup: group,
+            componentName: mediaName,
             component: "media",
             option: mediaType,
             text: mediaAlt,
@@ -27,10 +29,10 @@ export const MediaPod = ({ setAppState, groupName }) => {
     return (
         <div className="pod fullPod podExpand">
             <div className="halfPodHeader">
-                <CgArrowLeft className="back-arrow textButton" onClick={() => setAppState("Welcome")}/>
+                <CgArrowLeft className="back-arrow textButton" onClick={() => setAppState("CreateComponent")}/>
                 <h2>Media</h2>
                 <form onSubmit={submitHandler}>
-                    <GroupField groupName={groupName} />  
+                    <GroupField setGroup={setGroup} existingGroups={existingGroups} /> 
                     <div className="inputGroup inputGroupLine">
                         <label htmlFor="mediaName">Name: </label>
                         <input type="text" id="mediaName" name="mediaName" onChange={(e) => setMediaName(e.target.value)}/>
