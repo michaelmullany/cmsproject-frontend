@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
-import { postComponents } from "../../utils";
-
+import { postComponents, deleteComponent } from "../../utils";
+import {AiFillDelete} from "react-icons/ai";
 
 export const ManageGroupsPod = () => {
     const [existingComponents, setExistingComponents] = useState([]);
@@ -17,6 +17,10 @@ export const ManageGroupsPod = () => {
         if(e.key == "Enter"){
             e.preventDefault();
         }
+    }
+
+    const deleteButtonHandler = (x) => (e) => {
+        deleteComponent(x.componentName)
     }
   
     return (
@@ -36,19 +40,22 @@ export const ManageGroupsPod = () => {
                         <table className="podTable">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Modified</th>
+                                    <th style={{"width":"30%"}}>Name</th>
+                                    <th style={{"width":"30%"}}>Type</th>
+                                    <th style={{"width":"30%"}}>Modified</th>
+                                    <th style={{"width":"10%"}}></th>
                                 </tr>
                             </thead>
                             <tbody>     
                                                           
-                                {existingComponents.map(x => {
-                                    return (<tr>
+                                {existingComponents.map((x, index) => {
+                                    return (<tr id={index}>
                                             <td>{x.componentName}</td>
                                             <td>{x.component}</td>
                                             <td>01/01/2022</td>
+                                            <td><button className="noStyleButton" onClick={deleteButtonHandler(x)}> <AiFillDelete /></button></td>
                                             </tr>
+                                            
                                     )
                                 })}                                
                             </tbody>
