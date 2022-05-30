@@ -1,4 +1,9 @@
-export const RecentGroups = () => {
+export const RecentGroups = ({ existingGroups, setSelectedGroup }) => {
+
+    const selectGroupHandler = group => {
+        console.log(group);
+        setSelectedGroup(group);
+    }
 
     return (
         <div className="pod halfPod tablePod">
@@ -16,22 +21,14 @@ export const RecentGroups = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Example Name</td>
-                                    <td>01/01/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>01/02/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>Example Name 2</td>
-                                    <td>01/02/2022</td>
-                                </tr>                                
+                                {existingGroups.map(group => {
+                                    return (
+                                        <tr key={group._id} onClick={() => {selectGroupHandler(group)}}>
+                                            <td>{group.groupName}</td>
+                                            <td>{group.dateModified}</td>
+                                        </tr>
+                                    )
+                                })} 
                             </tbody>
                         </table>
                     </div>

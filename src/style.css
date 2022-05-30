@@ -24,6 +24,7 @@
     --introTextPFontSize: 36px;
     --otherHeadingsH2FontSize: 24px;
     --paragraphFontSize: 20px;
+    --feedbackFontSize: 16px;
 
 }
 
@@ -435,6 +436,25 @@ li {
     display: flex;
     flex-direction: column;
 }
+
+.feedbackBlock {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.25em 0;
+}
+
+.feedback {
+    font-size: var(--feedbackFontSize);
+    margin: 0 0.5em;
+}
+
+.feedback-error {
+    color: red;
+}
+
+.feedback-success-icon {
+    color: green;
 
 .noStyleButton {
     border: none !important;
