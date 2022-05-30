@@ -236,6 +236,7 @@ tr:nth-child(even) {
     justify-content: center;
     height: 75%;
     width: 100%;
+    margin-top: 15px;
 }
 
 #recentComponentsBody, #componentSelect {

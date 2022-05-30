@@ -14,7 +14,7 @@ export const ManageGroupsPod = () => {
         
 
     const searchSubmitHandler = (e) => {
-         {
+        if(e.key == "Enter"){
             e.preventDefault();
         }
     }
