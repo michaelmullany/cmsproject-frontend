@@ -1,18 +1,16 @@
 import { useState } from 'react';
 import { CgArrowLeft } from "react-icons/cg";
-import { submitNewComponent } from '../../utils';
-import { GroupField } from './Fields/GroupField';
-import { Feedback } from './Feedback';
+import { updateComponent } from '../../utils';
+import { GroupFieldExisting } from '../pods/Fields/GroupFieldExisting';
 
-export const MediaPod = ({ setAppState, existingGroups }) => {
+export const EditMediaPod = ({ setAppState, existingGroups, editComponentObj }) => {
 
-    const [group, setGroup] = useState(existingGroups[0].groupName);
-    const [mediaName, setMediaName] = useState();
-    const [mediaType, setMediaType] = useState("image");
-    const [mediaSource, setMediaSource] = useState();
-    const [mediaAlt, setMediaAlt] = useState();
-    const [mediaSize, setMediaSize] = useState("small");
-    const [feedback, setFeedback] = useState();
+    const [group, setGroup] = useState(existingGroups[0].assignedToGroup);
+    const [mediaName, setMediaName] = useState(editComponentObj.componentName);
+    const [mediaType, setMediaType] = useState(editComponentObj.option);
+    const [mediaSource, setMediaSource] = useState(editComponentObj.src);
+    const [mediaAlt, setMediaAlt] = useState(editComponentObj.text);
+    const [mediaSize, setMediaSize] = useState(editComponentObj.size);
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -24,8 +22,9 @@ export const MediaPod = ({ setAppState, existingGroups }) => {
             text: mediaAlt,
             src: mediaSource,
             size: mediaSize,
+            _id: editComponentObj._id
         }
-        submitNewComponent(component, setFeedback);
+        updateComponent(component);
     }
 
     return (
@@ -34,35 +33,34 @@ export const MediaPod = ({ setAppState, existingGroups }) => {
                 <CgArrowLeft className="back-arrow textButton" onClick={() => setAppState("CreateComponent")}/>
                 <h2>Media</h2>
                 <form onSubmit={submitHandler}>
-                    <GroupField setGroup={setGroup} existingGroups={existingGroups} /> 
+                    <GroupFieldExisting setGroup={setGroup} existingGroups={existingGroups} editComponentObj={editComponentObj}/> 
                     <div className="inputGroup inputGroupLine">
                         <label htmlFor="mediaName">Name: </label>
-                        <input type="text" id="mediaName" name="mediaName" onChange={(e) => setMediaName(e.target.value)}/>
+                        <input type="text" id="mediaName" name="mediaName" onChange={(e) => setMediaName(e.target.value)} defaultValue={mediaName}/>
                     </div>
                     <div className="inputGroup inputGroupLine">
                         <label htmlFor="mediaType">Type: </label>
-                        <select id="mediaType" name="mediaType" size="1" onChange={(e) => setMediaType(e.target.value)}>
+                        <select id="mediaType" name="mediaType" size="1" onChange={(e) => setMediaType(e.target.value)} defaultValue={mediaType}>
                             <option value="image">Image</option>
                             <option value="video">Video</option>
                         </select>
                     </div>
                     <div className="inputGroup inputGroupLine">
                         <label htmlFor="mediaSource">Source: </label>
-                        <input type="text" id="mediaSource" name="mediaSource" onChange={(e) => setMediaSource(e.target.value)}/>
+                        <input type="text" id="mediaSource" name="mediaSource" onChange={(e) => setMediaSource(e.target.value)} defaultValue={mediaSource}/>
                     </div>
                     <div className="inputGroup inputGroupLine">
                         <label htmlFor="mediaAlt">Alt Text: </label>
-                        <input type="text" id="mediaAlt" name="mediaAlt" onChange={(e) => setMediaAlt(e.target.value)}/>
+                        <input type="text" id="mediaAlt" name="mediaAlt" onChange={(e) => setMediaAlt(e.target.value)} defaultValue={mediaAlt}/>
                     </div>
                     <div className="inputGroup inputGroupLine">
                         <label htmlFor="mediaSize">Type: </label>
-                        <select id="mediaSize" name="mediaSize" size="1" onChange={(e) => setMediaSize(e.target.value)}>
+                        <select id="mediaSize" name="mediaSize" size="1" onChange={(e) => setMediaSize(e.target.value)} defaultValue={mediaSize}>
                             <option value="small">Small</option>
                             <option value="medium">Medium</option>
                             <option value="large">Large</option>
                         </select>
                     </div>
-                    {feedback && <Feedback feedback={feedback} />}
                     <div className="buttonContainer">
                         <button type="submit">Add</button>
                     </div>

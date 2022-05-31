@@ -24,6 +24,7 @@
     --introTextPFontSize: 36px;
     --otherHeadingsH2FontSize: 24px;
     --paragraphFontSize: 20px;
+    --feedbackFontSize: 16px;
 
 }
 
@@ -51,6 +52,8 @@ h2, th {
     font-size: var(--otherHeadingsH2FontSize); 
     font-weight: 400px;
     padding-left: 8px;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
 }
 p, a, td, label, select, input {
     font-family: var(--paragraphFontFamily);
@@ -115,7 +118,7 @@ tr:nth-child(even) {
 .sideBarMenuOptions p {
     font-size: 17px;
 }
-#sideBarMenuCreateComp {
+#sideBarMenuGroups {
     background-color: var(--light-shades);
 }
 #supportIconContainer {
@@ -144,7 +147,7 @@ tr:nth-child(even) {
 
 .pod {
     background-color: var(--pods);
-    border-radius: 5px;
+    border-radius: 12px;
     padding: 1rem;
 }
 
@@ -167,6 +170,7 @@ tr:nth-child(even) {
     overflow: auto;
     border-radius: 12px;
 }
+
 .podTable {
     width:100%;
     text-align: center;    
@@ -177,10 +181,12 @@ tr:nth-child(even) {
 
 .podTable th {
     font-size: 14px;
-    width: 43%;
     background: #F3F7F8;
     position: sticky;
     top: 0;
+}
+.podTable tr {
+    height: 20px;
 }
 .podTable td {
     font-size: 14px;
@@ -202,6 +208,7 @@ tr:nth-child(even) {
 .podTable tr th:last-child {
   border-right: 0;
     }
+
 
 /* 2 half pods alongside each other */
 .formPodsContainer {
@@ -236,13 +243,16 @@ tr:nth-child(even) {
     justify-content: center;
     height: 75%;
     width: 100%;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
 }
 
 #recentComponentsBody, #componentSelect {
-    width: 95%;
+    width: 100%;
     background-color: var(--light-shades);
     border-radius: 12px;
 }
+
 .formBuildContainer {
     display: flex;
     justify-content: center;
@@ -264,6 +274,7 @@ width: 100%;
     justify-content: center;
     width: 100%;
     height: 92%;
+    padding: 12px;
 }
 
 .supportComponentContainer p, .supportComponentContainer a{
@@ -274,7 +285,7 @@ width: 100%;
     background-color: var(--light-shades);
     border-radius: 12px;
     height: 92%;
-    overflow-x: scroll;
+
 }
 #supportMainContainer {
     padding-left: 15px;
@@ -389,7 +400,7 @@ li {
     color: var(--primaryText);
 }
 
-.textButton:hover, .formButton svg:hover {
+.textButton:hover, .formButton svg:hover, #accessForm button:hover {
     color: var(--main-colour);
     cursor: pointer;
 }
@@ -409,8 +420,103 @@ li {
 
 #addFieldsSubForm {
     border: var(--primaryText) solid 1px;
-    border-radius: 15px;
+    border-radius: 12px;
     margin: 0.5em;
     padding: 0 1em 1em 1em;
     background-color: var(--pods1);
+}
+
+#accessLogo {
+    width: 10%;
+    margin: 2em 0;
+}
+
+#accessForm {
+    background-color: #3D78A1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#accessForm form {
+    background-color: #F3F7F8;
+    padding: 1rem;
+    border-radius: 12px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+#accessForm button {
+    margin: 1em 0;
+}
+
+#accessForm p {
+    text-align: center;
+    margin: 0 auto;
+    width: fit-content;
+    font-size: var(--feedbackFontSize);
+}
+
+.accessLink {
+    font-weight: bold;
+}
+
+.accessLink:hover {
+    color: #3d78a1;
+    cursor: pointer;
+}
+
+.feedbackBlock {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.25em 0;
+}
+
+.feedback {
+    font-size: var(--feedbackFontSize);
+    margin: 0 0.5em;
+}
+
+.feedback-error {
+    color: red;
+}
+
+.feedback-success-icon {
+    color: green;
+}
+
+.noStyleButton {
+    border: none !important;
+    background-color:transparent;
+    box-shadow: none !important;
+    cursor:pointer;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 15px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 15px;     
+}
+
+#manageCompContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+}
+.emptyPod {    
+        width: 36vw;    
+}
+
+#usernameSidebar {
+    color: #F3F7F8;
+    text-align: center;
+}
+
+#manageCompContainer form {
+    margin: 0.5em 0;
 }

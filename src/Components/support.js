@@ -1,19 +1,19 @@
-import { Sidebar } from "./Sidebar"
+
 export const Support = () => {
 
     return (        
         <div>
             <div id="mainContainer">
-                <Sidebar />
+
                 <div id="supportBodyContainer">
                     <div>
                         <h1>Support</h1>
                         <p class="introText">Guides and resources for building components and writing content</p>
                     </div>
-                    <div className="fullPodContainer">
-                    <div className="fullPod">
+                    <div className="fullPodContainer fullPod">
+
                         <div className="fullPodHeader">
-                            <h2>Coding Fundamentals</h2>
+
                         </div>
                         <div className="supportComponentContainer">
                                 <div className="supportComponentsBody">
@@ -24,7 +24,7 @@ export const Support = () => {
                                     <p><a href="http://www.udemy.com/" target="_blank">Udemy, inc.</a> - Udemy, Inc. is a for-profit massive open online course provider aimed at professional adults and students.</p>
                                 </div>
                         </div>
-                    </div>
+
                     </div>
                     
                 </div>
