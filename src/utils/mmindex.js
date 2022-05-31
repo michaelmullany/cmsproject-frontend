@@ -33,3 +33,37 @@ export const getGroupsList = async (setter) => {
         console.log(err);
     }
 }
+
+export const updateGroup = async (update) => {
+    try {
+        const response = await fetch(`${process.env.REACT_APP_REST_API}group`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(update)
+        });        
+        const data = await response.json();
+        console.log(data);
+    }
+ catch (err) {
+    console.log(err.message);
+    
+    }
+}
+
+export const deleteGroup = async (id) => {
+    console.log("Deleting Group");
+    console.log(id);
+    try {
+        const response = await fetch(`${process.env.REACT_APP_REST_API}group`, {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(id)
+        });        
+        const data = await response.json();
+        console.log(data);
+    }
+ catch (err) {
+    console.log(err.message);
+    
+    }
+}

@@ -10,6 +10,7 @@ import { ButtonPod } from "./pods/ButtonPod";
 import { NewFormPod } from './pods/NewFormPod'
 import { ManageGroupsPod } from "./pods/ManageGroupsPod";
 import { SelectedGroup } from "./pods/SelectedGroup";
+import { CreateComponentPod } from "./pods/CreateComponent";
 
 export const MainApp = () => {
 
@@ -29,18 +30,33 @@ export const MainApp = () => {
                 {
                     (!appState || appState === "Welcome") &&
                     <>
+                        {!selectedGroup && 
                         <RecentGroups 
                             existingGroups={existingGroups}
+                            setExistingGroups={setExistingGroups}
                             setSelectedGroup={setSelectedGroup}
                         />
+                        }
+                        {!selectedGroup && 
                         <AddGroup 
                             setAppState={setAppState}
                             groupName={groupName}
                             setGroupName={setGroupName}
                             setExistingGroups={setExistingGroups}
                         />
-                        {selectedGroup && <SelectedGroup groupName={groupName} setGroupName={setGroupName} selectedGroup={selectedGroup} />}
+                        }
+                        {selectedGroup && 
+                            <SelectedGroup 
+                                selectedGroup={selectedGroup} 
+                                setSelectedGroup={setSelectedGroup}
+                                setExistingGroups={setExistingGroups}
+                            />
+                        }
                     </>
+                }
+                {
+                    appState==="CreateComponent" &&
+                    <CreateComponentPod setAppState={setAppState} />
                 }
                 {
                     appState==="ManageGroups" &&
@@ -48,22 +64,22 @@ export const MainApp = () => {
                 }
                 {
                     appState==="AddTextbox" &&
-                    <TextboxPod setAppState={setAppState} groupName={groupName} />
+                    <TextboxPod setAppState={setAppState} existingGroups={existingGroups} />
                 }
                 {
                     appState==="AddBanner" &&
-                    <BannerPod setAppState={setAppState} groupName={groupName} />                
+                    <BannerPod setAppState={setAppState} existingGroups={existingGroups} />                
                 }
                 {
                     appState==="AddMedia" &&
-                    <MediaPod setAppState={setAppState} groupName={groupName} />                
+                    <MediaPod setAppState={setAppState} existingGroups={existingGroups} />                
                 }              {
                     appState==="AddButton" &&
-                    <ButtonPod setAppState={setAppState} groupName={groupName} />                
+                    <ButtonPod setAppState={setAppState} existingGroups={existingGroups} />                
                 }
                 {
                     appState==="AddForm" && 
-                    <NewFormPod setAppState={setAppState} groupName={groupName} />
+                    <NewFormPod setAppState={setAppState} existingGroups={existingGroups} />
                 }
             </main>
         </div>

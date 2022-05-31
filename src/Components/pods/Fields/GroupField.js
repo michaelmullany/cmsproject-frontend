@@ -1,8 +1,16 @@
-export const GroupField = ({ groupName}) => {
+export const GroupField = ({ existingGroups, setGroup }) => {
     return (
         <div className="inputGroup inputGroupLine">
             <label htmlFor="selectGroup">Group: </label>
-            <input type="text" id="selectGroup" name="selectGroup" value={groupName} disabled />
+            <select id="selectGroup" name="selectGroup" size="1" onChange={(e) => setGroup(e.target.value)}>
+            {
+                existingGroups.map(group => {
+                    return (
+                        <option key={group._id} value={group._id}>{group.groupName}</option>
+                    )
+                })
+            }
+            </select>
         </div>     
     )
 }
