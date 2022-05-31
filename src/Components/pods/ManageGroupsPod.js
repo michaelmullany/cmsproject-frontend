@@ -2,7 +2,9 @@ import {useState, useEffect} from 'react'
 import { postComponents, deleteComponent } from "../../utils";
 import {AiFillDelete} from "react-icons/ai";
 import { EditTextBoxPod } from '../editPods/EditTextBoxPod';
-
+import { EditFormPod } from '../editPods/EditFormPod';
+import { EditBannerPod } from '../editPods/EditBannerPod'
+import { EditMediaPod } from '../editPods/EditMediaPod'
 
 export const ManageGroupsPod = ({setGroup, existingGroups}) => {
     const [existingComponents, setExistingComponents] = useState([]);
@@ -31,7 +33,10 @@ export const ManageGroupsPod = ({setGroup, existingGroups}) => {
         deleteComponent(x.componentName)
     }
     const editComponentHandler = (obj) => {
+        console.log("edit comp handler started")
         setEditComponentObj(obj);
+        console.log("setEditComponentObj updated with:")
+        console.log(obj)
         setAppState(obj.component);
         setOn(!on);
         }
@@ -109,11 +114,47 @@ export const ManageGroupsPod = ({setGroup, existingGroups}) => {
             {/* edit component pod  */}
             
             {
-                (appState == "text") &&
+                (appState == "text" || appState == "Text") &&
                 <>
                     <div id="editExistPod">
 
                             <EditTextBoxPod setAppState={setAppState} editComponentObj={editComponentObj} setGroup={setGroup} existingGroups={existingGroups}  />
+                    </div>
+                </>
+            }
+            {
+                (appState == "form" || appState == "Form") &&
+                <>
+                    <div id="editExistPod">
+
+                            <EditFormPod setAppState={setAppState} editComponentObj={editComponentObj} setGroup={setGroup} existingGroups={existingGroups}  />
+                    </div>
+                </>
+            }
+            {
+                (appState == "banner" || appState == "Banner") &&
+                <>
+                    <div id="editExistPod">
+
+                            <EditBannerPod setAppState={setAppState} editComponentObj={editComponentObj} setGroup={setGroup} existingGroups={existingGroups}  />
+                    </div>
+                </>
+            }
+            {
+                (appState == "button" || appState == "Button") &&
+                <>
+                    <div id="editExistPod">
+
+                            <EditBannerPod setAppState={setAppState} editComponentObj={editComponentObj} setGroup={setGroup} existingGroups={existingGroups}  />
+                    </div>
+                </>
+            }
+            {
+                (appState == "media" || appState == "Media") &&
+                <>
+                    <div id="editExistPod">
+
+                            <EditMediaPod setAppState={setAppState} editComponentObj={editComponentObj} setGroup={setGroup} existingGroups={existingGroups}  />
                     </div>
                 </>
             }
