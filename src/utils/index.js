@@ -105,3 +105,22 @@ export const deleteComponent = async (componentName) => {
     
     }
 }
+
+export const updateComponent = async (component) => {
+    try {
+        console.log("component is: " + component)
+        const response = await fetch(`${process.env.REACT_APP_REST_API}component`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(component),
+        });
+
+        const data = await response.json();
+        console.log(data);
+        if (data.error) {
+            throw new Error(data.error)
+        }  
+    } catch (err) {
+        console.log(err.message);
+    }
+}
