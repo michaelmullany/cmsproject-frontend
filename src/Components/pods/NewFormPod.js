@@ -35,7 +35,7 @@ export const NewFormPod = ({ setAppState, existingGroups }) => {
             component: "Form",
             formFields: fieldList,
         }
-        submitNewComponent(component);
+        submitNewComponent(component, setFeedback);
     }
 
     const formButtonHandler = (param, index) => {

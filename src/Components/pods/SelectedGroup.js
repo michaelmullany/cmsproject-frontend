@@ -71,8 +71,8 @@ export const SelectedGroup = ({ selectedGroup, setSelectedGroup, setExistingGrou
                             </div>
                         </div>
                     </div>
-                    <button className="textButton" onClick={updateHandler} type="submit" disabled={newName==""||newName==selectedGroup.groupName}>Update</button>
-                    <button className="textButton deleteButton" onClick={deleteHandler} type="button">Delete</button>
+                    {/* <button className="textButton" onClick={updateHandler} type="submit" disabled={newName==""||newName==selectedGroup.groupName}>Update</button>
+                    <button className="textButton deleteButton" onClick={deleteHandler} type="button">Delete</button> */}
                 </form>                
             </div>
         </div>

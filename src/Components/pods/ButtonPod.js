@@ -23,7 +23,7 @@ export const ButtonPod = ({ setAppState, existingGroups }) => {
             src: buttonUrl,
             size: buttonSize
         }
-        submitNewComponent(component);
+        submitNewComponent(component, setFeedback);
     }
 
     return (

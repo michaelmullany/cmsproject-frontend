@@ -25,7 +25,7 @@ export const MediaPod = ({ setAppState, existingGroups }) => {
             src: mediaSource,
             size: mediaSize,
         }
-        submitNewComponent(component);
+        submitNewComponent(component, setFeedback);
     }
 
     return (

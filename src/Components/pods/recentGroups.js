@@ -14,7 +14,7 @@ export const RecentGroups = ({ existingGroups, setExistingGroups, setSelectedGro
     }
 
     return (
-        <div className="pod halfPod tablePod">
+        <div className="pod halfPod podExpand">
             <div className="halfPodHeader">
             <h2>Recent Groups</h2>
             </div>

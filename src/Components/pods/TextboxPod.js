@@ -20,7 +20,7 @@ export const TextboxPod = ({ setAppState, existingGroups }) => {
             text: htmlContent,
         }
         console.log(component);
-        submitNewComponent(component);
+        submitNewComponent(component, setFeedback);
     }
     
     return (

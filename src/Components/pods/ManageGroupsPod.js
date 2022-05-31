@@ -53,7 +53,7 @@ export const ManageGroupsPod = ({setGroup, existingGroups}) => {
                     (!appState || appState === "Welcome") &&
                     <>
             {/* existing component search table */}
-            <div className="pod halfPod tablePod">
+            <div className="pod halfPod podExpand">
                 <div className="halfPodHeader">
                 <h2>Components</h2>
                 </div>
