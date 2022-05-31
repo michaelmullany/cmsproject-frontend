@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { FiChevronUp, FiChevronDown } from "react-icons/fi";
 import { CgArrowLeft } from "react-icons/cg";
 import { submitNewComponent } from '../../utils';
-import { GroupField } from './Fields/GroupField';
+import { GroupField } from '../pods/Fields/GroupField';
 
 
-export const NewFormPod = ({ setAppState, groupName, editComponentObj }) => {
+export const EditFormPod = ({ setAppState, groupName, editComponentObj, existingGroups }) => {
 
     const [formName, setFormName] = useState();
     const [fieldName, setFieldName] = useState("blank");
@@ -81,7 +81,7 @@ export const NewFormPod = ({ setAppState, groupName, editComponentObj }) => {
                                 </select>  
                             </div>  
                             <div className="inputGroup">
-                                <button type="button" onClick={(e) => addFieldHandler(e)}>Add Field</button>   
+                                <button type="button" onClick={(e) => submitHandler(e)}>Add Field</button>   
                             </div>  
                         </div>
                         <div className="buttonContainer">
@@ -101,6 +101,7 @@ export const NewFormPod = ({ setAppState, groupName, editComponentObj }) => {
                     <div id="formBuild">
                         
                         <table className="fullWidthTable">
+                        <tbody>
                         <tr><th>Order</th><th>Field Name</th><th>Field Type</th></tr>
                         {fieldList.map((x,index) => {
                             if (index === 0) {
@@ -125,6 +126,7 @@ export const NewFormPod = ({ setAppState, groupName, editComponentObj }) => {
                             }
                             
                         })}
+                        </tbody>
                         </table>
                         
                     </div>

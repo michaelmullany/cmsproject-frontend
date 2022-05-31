@@ -1,18 +1,24 @@
 import {useState, useEffect} from 'react'
 import { postComponents, deleteComponent } from "../../utils";
 import {AiFillDelete} from "react-icons/ai";
-import { EditTextBoxPod, editTextBoxPod } from '../editPods/EditTextBoxPod';
+import { EditTextBoxPod } from '../editPods/EditTextBoxPod';
+import { EditFormPod } from '../editPods/EditFormPod'
 
 export const ManageGroupsPod = ({setGroup, existingGroups}) => {
     const [existingComponents, setExistingComponents] = useState([]);
     const [searchField, setSearchField] = useState("");
     const [appState, setAppState] = useState("")
     const [editComponentName, setEditComponentName] = useState("")
-    const [editComponentObj, setEditComponentObj] = useState()
+    const [editComponentObj, setEditComponentObj] = useState();
+    const [componentEdit, setComponentEdit] = useState();
+    const [on, setOn] = useState(false);
+
+
     
     useEffect(() => {
         postComponents(searchField, setExistingComponents);
     }, [existingComponents]);
+
 
         
 
@@ -25,15 +31,27 @@ export const ManageGroupsPod = ({setGroup, existingGroups}) => {
         deleteComponent(x.componentName)
     }
     const editComponentHandler = (obj) => {
-        setEditComponentObj(obj)
-        setAppState(obj.component)
+        setEditComponentObj(obj);
+        setAppState(obj.component);
+        setOn(!on);
         }
+    
+    // const editComponentHandler = (obj) => {
+    //    setAppState(obj.component)
+    //     if(obj.component == "text") {
+    //         setEditComponentObj(obj);
+    //         setComponentEdit(<EditTextBoxPod setAppState={setAppState} editComponentObj={editComponentObj} setGroup={setGroup} existingGroups={existingGroups}  />)
+    //     }       
+    // }
+
 
 
   
     return (
         <div id="manageCompContainer">
-
+            {
+                    (!appState || appState === "Welcome") &&
+                    <>
             {/* existing component search table */}
             <div className="pod halfPod tablePod">
                 <div className="halfPodHeader">
@@ -86,31 +104,33 @@ export const ManageGroupsPod = ({setGroup, existingGroups}) => {
                 </div>
                 
             </div>
-            
+            </>
+            }
             {/* edit component pod  */}
-
-
-            
-
             
             {
-                (!appState || appState == "") &&
+                (appState == "text") &&
                 <>
-                    <div id="editExistPod" className="emptyPod">
+                    <div id="editExistPod">
 
+                            <EditTextBoxPod setAppState={setAppState} editComponentObj={editComponentObj} setGroup={setGroup} existingGroups={existingGroups}  />
                     </div>
                 </>
             }
-            {
-                (appState == "text") &&
+
+
+
+
+            {/* {
+                (appState == "text" || appState == "Text") &&
                 <> 
-                    <EditTextBoxPod setAppState={setAppState} editComponentObj={editComponentObj} setGroup={setGroup} existingGroups={existingGroups} />
+                     />
                 </>     
             }
-            {/* {
-                (appState == form) &&
+            {
+                (appState == "Form" ) &&
                 <>
-                    <EditFormPod setAppState={setAppState} editComponentObj={editComponentObj} />
+                    <EditFormPod setAppState={setAppState} editComponentObj={editComponentObj} setGroup={setGroup}/>
                 </>
             } */}
 

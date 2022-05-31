@@ -17,7 +17,7 @@ export const MediaPod = ({ setAppState, existingGroups }) => {
         let component = {
             assignedToGroup: group,
             componentName: mediaName,
-            component: "media",
+            component: "Media",
             option: mediaType,
             text: mediaAlt,
             src: mediaSource,

@@ -30,7 +30,7 @@ export const NewFormPod = ({ setAppState, existingGroups }) => {
         let component = {
             assignedToGroup: group,
             componentName: formName,
-            component: "form",
+            component: "Form",
             formFields: fieldList,
         }
         submitNewComponent(component);

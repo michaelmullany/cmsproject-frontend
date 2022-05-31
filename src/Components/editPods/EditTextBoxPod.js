@@ -1,13 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CgArrowLeft } from "react-icons/cg";
-import { GroupField } from '../pods/Fields/GroupField';
+import { GroupFieldExisting } from '../pods/Fields/GroupFieldExisting';
 import { updateComponent } from '../../utils';
 import {  } from '../../utils';
 
-export const EditTextBoxPod = ({ setAppState, editComponentObj, existingGroups }) => {
+
+export const EditTextBoxPod = ({ setAppState, editComponentObj,  existingGroups }) => {
     const [textBoxName, setTextboxName] = useState(editComponentObj.componentName);
     const [htmlContent, setHtmlContent] = useState(editComponentObj.text);
     const [group, setGroup] = useState();
+    
+
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -20,15 +23,16 @@ export const EditTextBoxPod = ({ setAppState, editComponentObj, existingGroups }
         }
         console.log(component);
         updateComponent(component);
+        setAppState("")
     }
 
 return (
-    <div className="pod halfPod">
+    <div className="pod fullPod">
             <div className="halfPodHeader">
                 <CgArrowLeft className="back-arrow textButton" onClick={() => setAppState("")}/>
                 <h2>Textbox</h2>
                 <form onSubmit={submitHandler}>
-                    <GroupField setGroup={setGroup} existingGroups={existingGroups} />  
+                    <GroupFieldExisting setGroup={setGroup} existingGroups={existingGroups} editComponentObj={editComponentObj}/>  
                     <div className="inputGroup inputGroupLine">
                         <label htmlFor="textboxName">Name: </label>
                         <input type="text" id="textboxName" name="textboxName" onChange={(e) => setTextboxName(e.target.value)} defaultValue={textBoxName}/>
@@ -42,7 +46,7 @@ return (
                         <div id="htmlDisplay" name="htmlDisplay">{htmlContent}</div>
                     </div>
                     <div className="buttonContainer">
-                        <button type="submit">Add</button>
+                        <button type="submit">Update</button>
                     </div>
                 </form>                
             </div>

@@ -5,7 +5,7 @@ import { GroupField } from './Fields/GroupField';
 
 export const TextboxPod = ({ setAppState, existingGroups }) => {
 
-    const [group, setGroup] = useState();
+    const [group, setGroup] = useState(existingGroups[0].groupName);
     const [textboxName, setTextboxName] = useState();
     const [htmlContent, setHtmlContent] = useState();
 
@@ -14,7 +14,7 @@ export const TextboxPod = ({ setAppState, existingGroups }) => {
         let component = {
             assignedToGroup: group,
             componentName: textboxName,
-            component: "text",
+            component: "Text",
             text: htmlContent,
         }
         submitNewComponent(component);
