@@ -43,13 +43,34 @@ export const SelectedGroup = ({ selectedGroup, setSelectedGroup, setExistingGrou
                         <input type="text" id="groupNameLabel" name="groupNameLabel" value={newName} onChange={(e) => setNewName(e.target.value)}/>
                     </div>
                     <p>Components List</p>
-                    {
-                        componentsInGroup.map(component => {
-                            return (
-                                <p key={component._id}>{component.componentName}</p>
-                            )
-                        })
-                    }
+                    <div id="recentComponentsBodyContainer">
+                        <div id="recentComponentsBody">
+                            <div className="podTableContainer">
+                                <table className="podTable">
+                                    <thead>
+                                        <tr>
+                                            <th style={{"width":"30%"}}>Name</th>
+                                            <th style={{"width":"30%"}}>Type</th>
+                                            <th style={{"width":"30%"}}>Modified</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            componentsInGroup.map(component => {
+                                                return (
+                                                    <tr key={component._id}>
+                                                        <td>{component.componentName}</td>
+                                                        <td>{component.component}</td>
+                                                        <td>{`${component.dateModified.substring(0,10)} - ${component.dateModified.substring(11,19)}`}</td>
+                                                    </tr>
+                                                )
+                                            })
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                     <button className="textButton" onClick={updateHandler} type="submit" disabled={newName==""||newName==selectedGroup.groupName}>Update</button>
                     <button className="textButton deleteButton" onClick={deleteHandler} type="button">Delete</button>
                 </form>                

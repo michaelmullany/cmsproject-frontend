@@ -4,7 +4,7 @@ import { deleteGroup, getGroupsList, getComponentsByGroup } from "../../utils/in
 export const RecentGroups = ({ existingGroups, setExistingGroups, setSelectedGroup, setComponentsInGroup }) => {
 
     const selectGroupHandler = async (group) => {
-        await getComponentsByGroup(group._id, setComponentsInGroup);
+        await getComponentsByGroup(group.groupName, setComponentsInGroup);
         setSelectedGroup(group);
     }
 
@@ -34,7 +34,7 @@ export const RecentGroups = ({ existingGroups, setExistingGroups, setSelectedGro
                                     return (
                                         <tr key={group._id}>
                                             <td onClick={() => {selectGroupHandler(group)}}>{group.groupName}</td>
-                                            <td onClick={() => {selectGroupHandler(group)}}>{group.dateModified}</td>
+                                            <td onClick={() => {selectGroupHandler(group)}}>{`${group.dateModified.substring(0,10)} - ${group.dateModified.substring(11,19)}`}</td>
                                             <td><button className="noStyleButton" onClick={() => {deleteButtonHandler(group._id)}}><AiFillDelete /></button></td>
                                         </tr>
                                     )

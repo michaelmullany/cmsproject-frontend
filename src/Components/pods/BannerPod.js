@@ -2,13 +2,15 @@ import { useState } from 'react';
 import { CgArrowLeft } from "react-icons/cg";
 import { submitNewComponent } from '../../utils';
 import { GroupField } from './Fields/GroupField';
+import { Feedback } from './Feedback';
 
 export const BannerPod = ({ setAppState, existingGroups }) => {
 
-    const [group, setGroup] = useState(existingGroups[0]._id);
+    const [group, setGroup] = useState(existingGroups[0].groupName);
     const [bannerName, setBannerName] = useState();
     const [bannerType, setBannerType] = useState("info");
     const [bannerText, setBannerText] = useState();
+    const [feedback, setFeedback] = useState();
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -19,9 +21,7 @@ export const BannerPod = ({ setAppState, existingGroups }) => {
             option: bannerType,
             text: bannerText,
         }
-        console.log("Adding Component: ");
-        console.log(component);
-        submitNewComponent(component);
+        submitNewComponent(component, setFeedback);
     }
 
     return (
@@ -46,6 +46,7 @@ export const BannerPod = ({ setAppState, existingGroups }) => {
                         <label htmlFor="bannerText">Text: </label>
                         <input type="text" id="bannerText" name="bannerText" onChange={(e) => setBannerText(e.target.value)}/>
                     </div>
+                    {feedback && <Feedback feedback={feedback} />}
                     <div className="buttonContainer">
                         <button type="submit">Add</button>
                     </div>

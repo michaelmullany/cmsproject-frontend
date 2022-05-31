@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { CgArrowLeft } from "react-icons/cg";
 import { submitNewComponent } from '../../utils';
 import { GroupField } from './Fields/GroupField';
+import { Feedback } from './Feedback';
 
 export const TextboxPod = ({ setAppState, existingGroups }) => {
 
-    const [group, setGroup] = useState(existingGroups[0]._id);
+    const [group, setGroup] = useState(existingGroups[0].groupName);
     const [textboxName, setTextboxName] = useState();
     const [htmlContent, setHtmlContent] = useState();
+    const [feedback, setFeedback] = useState();
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -17,6 +19,7 @@ export const TextboxPod = ({ setAppState, existingGroups }) => {
             component: "Text",
             text: htmlContent,
         }
+        console.log(component);
         submitNewComponent(component);
     }
     
@@ -39,6 +42,7 @@ export const TextboxPod = ({ setAppState, existingGroups }) => {
                         <label htmlFor="htmlDisplay">Preview: </label>
                         <div id="htmlDisplay" name="htmlDisplay">{htmlContent}</div>
                     </div>
+                    {feedback && <Feedback feedback={feedback} />}
                     <div className="buttonContainer">
                         <button type="submit">Add</button>
                     </div>

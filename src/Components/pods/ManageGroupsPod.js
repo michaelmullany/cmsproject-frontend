@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import { postComponents, deleteComponent } from "../../utils";
 import {AiFillDelete} from "react-icons/ai";
 import { EditTextBoxPod } from '../editPods/EditTextBoxPod';
-import { EditFormPod } from '../editPods/EditFormPod'
+
 
 export const ManageGroupsPod = ({setGroup, existingGroups}) => {
     const [existingComponents, setExistingComponents] = useState([]);

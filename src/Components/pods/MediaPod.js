@@ -2,15 +2,17 @@ import { useState } from 'react';
 import { CgArrowLeft } from "react-icons/cg";
 import { submitNewComponent } from '../../utils';
 import { GroupField } from './Fields/GroupField';
+import { Feedback } from './Feedback';
 
 export const MediaPod = ({ setAppState, existingGroups }) => {
 
-    const [group, setGroup] = useState(existingGroups[0]._id);
+    const [group, setGroup] = useState(existingGroups[0].groupName);
     const [mediaName, setMediaName] = useState();
     const [mediaType, setMediaType] = useState("image");
     const [mediaSource, setMediaSource] = useState();
     const [mediaAlt, setMediaAlt] = useState();
     const [mediaSize, setMediaSize] = useState("small");
+    const [feedback, setFeedback] = useState();
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -60,6 +62,7 @@ export const MediaPod = ({ setAppState, existingGroups }) => {
                             <option value="large">Large</option>
                         </select>
                     </div>
+                    {feedback && <Feedback feedback={feedback} />}
                     <div className="buttonContainer">
                         <button type="submit">Add</button>
                     </div>

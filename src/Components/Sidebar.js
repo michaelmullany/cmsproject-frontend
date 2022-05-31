@@ -3,11 +3,12 @@ import Logo from "../images/cmsLogo.png";
 import supportIcon from "../images/supportIcon.png"
 
 
-export const Sidebar = ({ setAppState }) => {
+export const Sidebar = ({ setAppState, user, setUser }) => {
     // ### useRefs and useState ###
     const createComponentRef = useRef(null);
     const modifyComponentRef = useRef(null);
     const groupsRef = useRef(null);   
+    const signOutRef = useRef(null);   
     const[page, setPage] = useState(groupsRef)
 
     // ### hanlders for mouse entering, clicking and leaving ###
@@ -25,7 +26,10 @@ export const Sidebar = ({ setAppState }) => {
                 setAppState("CreateComponent");
             } else if (param == modifyComponentRef) {
                 setAppState("ManageGroups")
-            } else {
+            }   else if (param == signOutRef) {
+                setUser(null);
+            } 
+            else {
                 setAppState("Welcome")
             }
             setPage(param);
@@ -41,7 +45,8 @@ export const Sidebar = ({ setAppState }) => {
             <div id="logoContainer">
                 <a href="#" ><img src={Logo} id="logo"/></a>
             </div>
-                <div id="sidebarMenu">                    
+                <div id="sidebarMenu">
+                    <p id="usernameSidebar">{`Welcome ${user}`}</p>
                     <a href="#" 
                         className="sideBarMenuOptions"
                         id="sideBarMenuGroups"
@@ -67,6 +72,14 @@ export const Sidebar = ({ setAppState }) => {
                         onClick={onClickHandler(modifyComponentRef)}
                         onMouseLeave={mouseLeaveHandler(modifyComponentRef)}>
                         <p>Manage components</p>
+                    </a>
+                    <a href="#"  
+                        className="sideBarMenuOptions"
+                        ref={signOutRef}
+                        onMouseEnter={mouseEnterHandler(signOutRef)} 
+                        onClick={onClickHandler(signOutRef)}
+                        onMouseLeave={mouseLeaveHandler(signOutRef)}>
+                        <p>Sign Out</p>
                     </a>
                 </div>
                 <div id="supportIconContainer">
