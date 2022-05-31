@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { getGroupsList, updateGroup, deleteGroup } from "../../utils/index"
 import { CgArrowLeft } from "react-icons/cg";
+import { getComponentsByGroup } from "../../utils/index";
 
 
-export const SelectedGroup = ({ selectedGroup, setSelectedGroup, setExistingGroups }) => {
+export const SelectedGroup = ({ selectedGroup, setSelectedGroup, setExistingGroups, componentsInGroup  }) => {
 
     const [newName, setNewName] = useState(selectedGroup.groupName);
 
@@ -42,9 +43,13 @@ export const SelectedGroup = ({ selectedGroup, setSelectedGroup, setExistingGrou
                         <input type="text" id="groupNameLabel" name="groupNameLabel" value={newName} onChange={(e) => setNewName(e.target.value)}/>
                     </div>
                     <p>Components List</p>
-                    <p>...</p>
-                    <p>...</p>
-                    <p>...</p>
+                    {
+                        componentsInGroup.map(component => {
+                            return (
+                                <p key={component._id}>{component.componentName}</p>
+                            )
+                        })
+                    }
                     <button className="textButton" onClick={updateHandler} type="submit" disabled={newName==""||newName==selectedGroup.groupName}>Update</button>
                     <button className="textButton deleteButton" onClick={deleteHandler} type="button">Delete</button>
                 </form>                

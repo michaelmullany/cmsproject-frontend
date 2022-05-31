@@ -1,10 +1,10 @@
 import { AiFillDelete } from "react-icons/ai";
 import { deleteGroup, getGroupsList, getComponentsByGroup } from "../../utils/index";
 
-export const RecentGroups = ({ existingGroups, setExistingGroups, setSelectedGroup }) => {
+export const RecentGroups = ({ existingGroups, setExistingGroups, setSelectedGroup, setComponentsInGroup }) => {
 
     const selectGroupHandler = async (group) => {
-        await getComponentsByGroup(group._id);
+        await getComponentsByGroup(group._id, setComponentsInGroup);
         setSelectedGroup(group);
     }
 

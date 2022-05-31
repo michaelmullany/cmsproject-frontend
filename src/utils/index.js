@@ -197,7 +197,7 @@ export const deleteGroup = async (id) => {
     }
 }
 
-export const getComponentsByGroup = async (id) => {
+export const getComponentsByGroup = async (id, setter) => {
     console.log("Getting Components By Group");
     console.log(id);
     try {
@@ -209,7 +209,7 @@ export const getComponentsByGroup = async (id) => {
         body: JSON.stringify(filter)
      });
      const data = await response.json();
-     console.log(data);
+     setter(data.groups);
     } catch (err) {
         console.log(err.message);
     }
