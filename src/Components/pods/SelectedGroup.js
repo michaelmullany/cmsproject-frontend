@@ -1,35 +1,34 @@
-import { useState, useEffect } from "react";
-import { getGroupsList, updateGroup, deleteGroup } from "../../utils/index"
+import { useState } from "react";
+// import { getGroupsList, updateGroup, deleteGroup } from "../../utils/index"
 import { CgArrowLeft } from "react-icons/cg";
-import { getComponentsByGroup } from "../../utils/index";
 
 
 export const SelectedGroup = ({ selectedGroup, setSelectedGroup, setExistingGroups, componentsInGroup  }) => {
 
     const [newName, setNewName] = useState(selectedGroup.groupName);
 
-    const updateHandler = async (e) => {
-        e.preventDefault();
-        if (newName === selectedGroup.groupName) return;
-        await updateGroup({
-            filter: {
-                _id: selectedGroup._id
-            },
-            update: {
-                groupName: newName,
-                dateModified: new Date()
-            }
-        });
-        await getGroupsList(setExistingGroups);
-        setSelectedGroup(undefined);
-    }
+    // const updateHandler = async (e) => {
+    //     e.preventDefault();
+    //     if (newName === selectedGroup.groupName) return;
+    //     await updateGroup({
+    //         filter: {
+    //             _id: selectedGroup._id
+    //         },
+    //         update: {
+    //             groupName: newName,
+    //             dateModified: new Date()
+    //         }
+    //     });
+    //     await getGroupsList(setExistingGroups);
+    //     setSelectedGroup(undefined);
+    // }
 
-    const deleteHandler = async (e) => {
-        e.preventDefault();
-        await deleteGroup({_id: selectedGroup._id});
-        await getGroupsList(setExistingGroups);
-        setSelectedGroup(undefined);
-    }
+    // const deleteHandler = async (e) => {
+    //     e.preventDefault();
+    //     await deleteGroup({_id: selectedGroup._id});
+    //     await getGroupsList(setExistingGroups);
+    //     setSelectedGroup(undefined);
+    // }
 
     return (
         <div className="pod fullPod podExpand">

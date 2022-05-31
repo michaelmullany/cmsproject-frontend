@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 export const GroupFieldExisting = ({ existingGroups, setGroup, editComponentObj }) => {
 
 
@@ -11,7 +9,7 @@ export const GroupFieldExisting = ({ existingGroups, setGroup, editComponentObj 
             <option>{editComponentObj.assignedToGroup}</option>     
             {
                 existingGroups.map(group => {
-                    if(group.groupName != editComponentObj.assignedToGroup){
+                    if(group.groupName !== editComponentObj.assignedToGroup){
                     return (
                         <option key={group._id} value={group.groupName}>{group.groupName}</option>
                     )
