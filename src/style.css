@@ -469,3 +469,14 @@ li {
     padding-bottom: 0px;
     font-size: 15px;     
 }
+
+#manageCompContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+}
+.emptyPod {    
+        width: 36vw;    
+}
+
