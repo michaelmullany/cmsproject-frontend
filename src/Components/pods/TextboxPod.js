@@ -5,7 +5,7 @@ import { GroupField } from './Fields/GroupField';
 
 export const TextboxPod = ({ setAppState, existingGroups }) => {
 
-    const [group, setGroup] = useState(existingGroups[0]._id);
+    const [group, setGroup] = useState(existingGroups[0].groupName);
     const [textboxName, setTextboxName] = useState();
     const [htmlContent, setHtmlContent] = useState();
 

@@ -7,7 +7,7 @@ import { GroupField } from './Fields/GroupField';
 
 export const NewFormPod = ({ setAppState, existingGroups }) => {
 
-    const [group, setGroup] = useState(existingGroups[0]._id);
+    const [group, setGroup] = useState(existingGroups[0].groupName);
     const [formName, setFormName] = useState();
     const [fieldName, setFieldName] = useState("blank");
     const [fieldType, setFieldType] = useState("field");
@@ -16,13 +16,15 @@ export const NewFormPod = ({ setAppState, existingGroups }) => {
     const addFieldHandler = (e) => {
         e.preventDefault();
         let tempObj = {
-            fieldName,
-            fieldType
+            fieldName: fieldName,
+            fieldType: fieldType
         }
-        console.log(tempObj);
+        
         let tempFieldListArray = [...fieldList];
+
         tempFieldListArray.push(tempObj)
         setFieldList(tempFieldListArray)
+        
     }
 
     const submitHandler = (e) => {
@@ -33,6 +35,8 @@ export const NewFormPod = ({ setAppState, existingGroups }) => {
             component: "Form",
             formFields: fieldList,
         }
+        console.log("fieldList is:")
+        console.log({fieldList})
         submitNewComponent(component);
     }
 
