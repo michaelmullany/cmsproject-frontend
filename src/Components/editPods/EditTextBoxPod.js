@@ -21,7 +21,6 @@ export const EditTextBoxPod = ({ setAppState, editComponentObj,  existingGroups 
             text: htmlContent,
             _id: editComponentObj._id
         }
-        console.log(component);
         updateComponent(component);
         setAppState("")
     }

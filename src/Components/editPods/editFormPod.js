@@ -1,16 +1,18 @@
 import { useState } from 'react';
 import { FiChevronUp, FiChevronDown } from "react-icons/fi";
+import {AiFillDelete} from "react-icons/ai";
 import { CgArrowLeft } from "react-icons/cg";
-import { submitNewComponent } from '../../utils';
-import { GroupField } from '../pods/Fields/GroupField';
+import { updateComponent, deleteComponent } from '../../utils';
+import { GroupFieldExisting } from '../pods/Fields/GroupFieldExisting';
 
 
 export const EditFormPod = ({ setAppState, groupName, editComponentObj, existingGroups }) => {
 
-    const [formName, setFormName] = useState();
+    const [formName, setFormName] = useState(editComponentObj.componentName);
     const [fieldName, setFieldName] = useState("blank");
     const [fieldType, setFieldType] = useState("field");
     const [fieldList, setFieldList] = useState([]);
+    const [group, setGroup] = useState();
 
     const addFieldHandler = (e) => {
         e.preventDefault();
@@ -25,14 +27,20 @@ export const EditFormPod = ({ setAppState, groupName, editComponentObj, existing
         setFieldList(tempFieldListArray)
     }
 
-    const submitHandler = (e) => {
+    const submitHandler = (obj) => (e) => {
         e.preventDefault();
         let component = {
-            name: formName,
-            component: "form",
-            formFields: fieldList,
+            
+            // componentName: formName,
+            // component: "Form",
+            // formFields: fieldList,
         }
-        submitNewComponent(component);
+        updateComponent(component);
+        setAppState("")
+    }
+
+    const deleteButtonHandler = (x) => (e) => {
+        deleteComponent(x.name)
     }
 
     const formButtonHandler = (param, index) => {
@@ -57,10 +65,10 @@ export const EditFormPod = ({ setAppState, groupName, editComponentObj, existing
                 <div className="halfPodHeader">              
                     <CgArrowLeft className="back-arrow textButton" onClick={() => setAppState("Welcome")}/>
                     <form onSubmit={submitHandler}>   
-                        <GroupField groupName={groupName} />                  
+                    <GroupFieldExisting setGroup={setGroup} existingGroups={existingGroups} editComponentObj={editComponentObj}/>                 
                         <div className="inputGroup">
                             <label htmlFor="formName">Form Name: </label>
-                            <input type="text" id="formName" name="formName" onChange={(e) => setFormName(e.target.value)} required/>
+                            <input type="text" id="formName" name="formName" onChange={(e) => setFormName(e.target.value)} defaultValue={formName} required/>
                         </div>
                         <div id="addFieldsSubForm">
                             <h2>Add Fields</h2>
@@ -81,7 +89,7 @@ export const EditFormPod = ({ setAppState, groupName, editComponentObj, existing
                                 </select>  
                             </div>  
                             <div className="inputGroup">
-                                <button type="button" onClick={(e) => submitHandler(e)}>Add Field</button>   
+                                <button type="button" onClick={(e) => addFieldHandler(e)}>Add Field</button>   
                             </div>  
                         </div>
                         <div className="buttonContainer">
@@ -102,17 +110,17 @@ export const EditFormPod = ({ setAppState, groupName, editComponentObj, existing
                         
                         <table className="fullWidthTable">
                         <tbody>
-                        <tr><th>Order</th><th>Field Name</th><th>Field Type</th></tr>
+                        <tr><th>Order</th><th>Field Name</th><th>Field Type</th><th></th></tr>
                         {fieldList.map((x,index) => {
                             if (index === 0) {
                                 return <tr key={index}>
                                     <td><button className="formButton" onClick={() => formButtonHandler("down", index)}><FiChevronDown /></button></td>
-                                    <td><p>{x.name}</p></td><td><p>{x.type}</p></td>
+                                    <td><p>{x.name}</p></td><td><p>{x.type}</p></td><td><button className="noStyleButton" onClick={deleteButtonHandler(x)}><AiFillDelete /></button></td>
                                     </tr>
                             } else if (index === (fieldList.length-1)) {                                
                                 return <tr key={index}>
                                     <td><button className="formButton" onClick={() => formButtonHandler("up", index)}><FiChevronUp /></button></td>
-                                    <td><p>{x.name}</p></td><td><p>{x.type}</p></td>
+                                    <td><p>{x.name}</p></td><td><p>{x.type}</p></td><td><button className="noStyleButton" onClick={deleteButtonHandler(x)}> <AiFillDelete /></button></td>
                                     </tr>
                             } else {
                             return <tr key={index}>
@@ -121,7 +129,7 @@ export const EditFormPod = ({ setAppState, groupName, editComponentObj, existing
                                         <button className="formButton dualButtons" onClick={() => formButtonHandler("up", index)}><FiChevronUp /></button>
                                         <button className="formButton dualButtons" onClick={() => formButtonHandler("down", index)}><FiChevronDown /></button>
                                 </div></td>
-                                <td><p>{x.name}</p></td><td><p>{x.type}</p></td>
+                                <td><p>{x.name}</p></td><td><p>{x.type}</p></td><td><button className="noStyleButton" onClick={deleteButtonHandler(x)}> <AiFillDelete /></button></td>
                                 </tr> 
                             }
                             
