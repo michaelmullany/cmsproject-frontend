@@ -116,7 +116,7 @@ tr:nth-child(even) {
 .sideBarMenuOptions p {
     font-size: 17px;
 }
-#sideBarMenuCreateComp {
+#sideBarMenuGroups {
     background-color: var(--light-shades);
 }
 #supportIconContainer {
@@ -456,6 +456,7 @@ li {
 .feedback-success-icon {
     color: green;
 }
+
 .noStyleButton {
     border: none !important;
     background-color:transparent;

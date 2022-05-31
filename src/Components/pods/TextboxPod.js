@@ -3,16 +3,18 @@ import { CgArrowLeft } from "react-icons/cg";
 import { submitNewComponent } from '../../utils';
 import { GroupField } from './Fields/GroupField';
 
-export const TextboxPod = ({ setAppState, groupName }) => {
+export const TextboxPod = ({ setAppState, existingGroups }) => {
 
+    const [group, setGroup] = useState();
     const [textboxName, setTextboxName] = useState();
     const [htmlContent, setHtmlContent] = useState();
 
     const submitHandler = (e) => {
         e.preventDefault();
         let component = {
-            name: textboxName,
-            component: "textbox",
+            assignedToGroup: group,
+            componentName: textboxName,
+            component: "text",
             text: htmlContent,
         }
         submitNewComponent(component);
@@ -21,10 +23,10 @@ export const TextboxPod = ({ setAppState, groupName }) => {
     return (
         <div className="pod fullPod podExpand">
             <div className="halfPodHeader">
-                <CgArrowLeft className="back-arrow textButton" onClick={() => setAppState("Welcome")}/>
+                <CgArrowLeft className="back-arrow textButton" onClick={() => setAppState("CreateComponent")}/>
                 <h2>Textbox</h2>
                 <form onSubmit={submitHandler}>
-                    <GroupField groupName={groupName} />  
+                    <GroupField setGroup={setGroup} existingGroups={existingGroups} />  
                     <div className="inputGroup inputGroupLine">
                         <label htmlFor="textboxName">Name: </label>
                         <input type="text" id="textboxName" name="textboxName" onChange={(e) => setTextboxName(e.target.value)}/>
