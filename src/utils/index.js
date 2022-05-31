@@ -46,21 +46,29 @@ export const signUp = async (username, email, password, setUser, setError) => {
 //     }
 // }
 
-export const submitNewComponent = async (component) => {
+export const submitNewComponent = async (component, setFeedback) => {
     try {
+        component.dateModified = new Date();
         const response = await fetch(`${process.env.REACT_APP_REST_API}component`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(component),
         });
-
         const data = await response.json();
         console.log(data);
         if (data.error) {
             throw new Error(data.error)
         }  
+        setFeedback({
+            type: "success",
+            message: `Successfully added new component ${data.componentName}`
+        });
     } catch (err) {
         console.log(err.message)
+        setFeedback({
+            type: "error",
+            message: "Could not add component - please make sure the name is unique"
+        });
     }
 }
 
@@ -197,11 +205,9 @@ export const deleteGroup = async (id) => {
     }
 }
 
-export const getComponentsByGroup = async (id, setter) => {
-    console.log("Getting Components By Group");
-    console.log(id);
+export const getComponentsByGroup = async (name, setter) => {
     try {
-        const filter = { assignedToGroup: id };
+        const filter = { assignedToGroup: name };
         console.log(JSON.stringify(filter));
         const response = await fetch(`${process.env.REACT_APP_REST_API}groupid`, {
         method: "POST",

@@ -12,7 +12,7 @@ import { ManageGroupsPod } from "./pods/ManageGroupsPod";
 import { SelectedGroup } from "./pods/SelectedGroup";
 import { CreateComponentPod } from "./pods/CreateComponent";
 
-export const MainApp = () => {
+export const MainApp = ({ user, setUser }) => {
 
     const [appState, setAppState] = useState();
     const [groupName, setGroupName] = useState("");
@@ -26,7 +26,7 @@ export const MainApp = () => {
 
     return (
         <div id="mainContainer">
-            <Sidebar setAppState={setAppState} />
+            <Sidebar setAppState={setAppState} user={user} setUser={setUser} />
             <main id="mainBodyContainer">
                 {
                     (!appState || appState === "Welcome") &&

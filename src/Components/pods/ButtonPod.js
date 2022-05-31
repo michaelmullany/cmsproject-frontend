@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { CgArrowLeft } from "react-icons/cg";
 import { submitNewComponent } from '../../utils';
 import { GroupField } from './Fields/GroupField';
+import { Feedback } from './Feedback';
 
 export const ButtonPod = ({ setAppState, existingGroups }) => {
 
@@ -10,6 +11,7 @@ export const ButtonPod = ({ setAppState, existingGroups }) => {
     const [buttonType, setButtonType] = useState("apply");
     const [buttonUrl, setButtonUrl] = useState();
     const [buttonSize, setButtonSize] = useState("small");
+    const [feedback, setFeedback] = useState();
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -21,7 +23,7 @@ export const ButtonPod = ({ setAppState, existingGroups }) => {
             src: buttonUrl,
             size: buttonSize
         }
-        submitNewComponent(component);
+        submitNewComponent(component, setFeedback);
     }
 
     return (
@@ -54,6 +56,7 @@ export const ButtonPod = ({ setAppState, existingGroups }) => {
                             <option value="large">Large</option>
                         </select>
                     </div>
+                    {feedback && <Feedback feedback={feedback} />}
                     <div className="buttonContainer">
                         <button type="submit">Add</button>
                     </div>

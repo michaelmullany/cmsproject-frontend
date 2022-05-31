@@ -22,7 +22,8 @@ export const SignupForm = ({setUser, setNeedsAccount}) => {
             <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)}/>
             {error && <p className="warningText">{error}</p>}
             <button type="submit">Sign Up</button>
-            <p onClick={() => setNeedsAccount(false)}>Already a user? Log in</p>
+            <p>Already a user?</p>
+            <p className="accessLink" onClick={() => setNeedsAccount(false)}> Log in</p>
         </form>
     )
 }

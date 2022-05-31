@@ -3,6 +3,7 @@ import { FiChevronUp, FiChevronDown } from "react-icons/fi";
 import { CgArrowLeft } from "react-icons/cg";
 import { submitNewComponent } from '../../utils';
 import { GroupField } from './Fields/GroupField';
+import { Feedback } from './Feedback';
 
 
 export const NewFormPod = ({ setAppState, existingGroups }) => {
@@ -12,6 +13,7 @@ export const NewFormPod = ({ setAppState, existingGroups }) => {
     const [fieldName, setFieldName] = useState("blank");
     const [fieldType, setFieldType] = useState("field");
     const [fieldList, setFieldList] = useState([]);
+    const [feedback, setFeedback] = useState();
 
     const addFieldHandler = (e) => {
         e.preventDefault();
@@ -38,6 +40,7 @@ export const NewFormPod = ({ setAppState, existingGroups }) => {
         console.log("fieldList is:")
         console.log({fieldList})
         submitNewComponent(component);
+
     }
 
     const formButtonHandler = (param, index) => {
@@ -89,6 +92,7 @@ export const NewFormPod = ({ setAppState, existingGroups }) => {
                                 <button type="button" onClick={(e) => addFieldHandler(e)}>Add Field</button>   
                             </div>  
                         </div>
+                        {feedback && <Feedback feedback={feedback} />}
                         <div className="buttonContainer">
                             <button type="submit">Submit</button>   
                         </div>                   
