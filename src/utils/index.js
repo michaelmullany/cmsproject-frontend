@@ -196,3 +196,21 @@ export const deleteGroup = async (id) => {
     
     }
 }
+
+export const getComponentsByGroup = async (id, setter) => {
+    console.log("Getting Components By Group");
+    console.log(id);
+    try {
+        const filter = { assignedToGroup: id };
+        console.log(JSON.stringify(filter));
+        const response = await fetch(`${process.env.REACT_APP_REST_API}groupid`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(filter)
+     });
+     const data = await response.json();
+     setter(data.groups);
+    } catch (err) {
+        console.log(err.message);
+    }
+}

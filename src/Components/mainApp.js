@@ -18,6 +18,7 @@ export const MainApp = () => {
     const [groupName, setGroupName] = useState("");
     const [existingGroups, setExistingGroups] = useState([]);
     const [selectedGroup, setSelectedGroup] = useState("");
+    const [componentsInGroup, setComponentsInGroup] = useState([]);
 
     useEffect(() => {
         getGroupsList(setExistingGroups);
@@ -35,6 +36,7 @@ export const MainApp = () => {
                             existingGroups={existingGroups}
                             setExistingGroups={setExistingGroups}
                             setSelectedGroup={setSelectedGroup}
+                            setComponentsInGroup={setComponentsInGroup}
                         />
                         }
                         {!selectedGroup && 
@@ -50,6 +52,7 @@ export const MainApp = () => {
                                 selectedGroup={selectedGroup} 
                                 setSelectedGroup={setSelectedGroup}
                                 setExistingGroups={setExistingGroups}
+                                componentsInGroup={componentsInGroup}
                             />
                         }
                     </>

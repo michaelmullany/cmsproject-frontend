@@ -5,11 +5,11 @@ import { GroupField } from './Fields/GroupField';
 
 export const ButtonPod = ({ setAppState, existingGroups }) => {
 
-    const [group, setGroup] = useState();
+    const [group, setGroup] = useState(existingGroups[0]._id);
     const [buttonName, setButtonName] = useState();
-    const [buttonType, setButtonType] = useState();
+    const [buttonType, setButtonType] = useState("apply");
     const [buttonUrl, setButtonUrl] = useState();
-    const [buttonSize, setButtonSize] = useState();
+    const [buttonSize, setButtonSize] = useState("small");
 
     const submitHandler = (e) => {
         e.preventDefault();

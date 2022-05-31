@@ -5,12 +5,12 @@ import { GroupField } from './Fields/GroupField';
 
 export const MediaPod = ({ setAppState, existingGroups }) => {
 
-    const [group, setGroup] = useState();
+    const [group, setGroup] = useState(existingGroups[0]._id);
     const [mediaName, setMediaName] = useState();
-    const [mediaType, setMediaType] = useState();
+    const [mediaType, setMediaType] = useState("image");
     const [mediaSource, setMediaSource] = useState();
     const [mediaAlt, setMediaAlt] = useState();
-    const [mediaSize, setMediaSize] = useState();
+    const [mediaSize, setMediaSize] = useState("small");
 
     const submitHandler = (e) => {
         e.preventDefault();
