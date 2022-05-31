@@ -7,7 +7,7 @@ import { GroupField } from './Fields/GroupField';
 
 export const NewFormPod = ({ setAppState, existingGroups }) => {
 
-    const [group, setGroup] = useState();
+    const [group, setGroup] = useState(existingGroups[0]._id);
     const [formName, setFormName] = useState();
     const [fieldName, setFieldName] = useState("blank");
     const [fieldType, setFieldType] = useState("field");

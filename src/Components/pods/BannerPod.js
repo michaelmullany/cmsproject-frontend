@@ -5,9 +5,9 @@ import { GroupField } from './Fields/GroupField';
 
 export const BannerPod = ({ setAppState, existingGroups }) => {
 
-    const [group, setGroup] = useState();
+    const [group, setGroup] = useState(existingGroups[0]._id);
     const [bannerName, setBannerName] = useState();
-    const [bannerType, setBannerType] = useState();
+    const [bannerType, setBannerType] = useState("info");
     const [bannerText, setBannerText] = useState();
 
     const submitHandler = (e) => {
@@ -19,6 +19,8 @@ export const BannerPod = ({ setAppState, existingGroups }) => {
             option: bannerType,
             text: bannerText,
         }
+        console.log("Adding Component: ");
+        console.log(component);
         submitNewComponent(component);
     }
 
