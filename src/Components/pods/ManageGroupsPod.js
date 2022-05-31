@@ -10,13 +10,9 @@ export const ManageGroupsPod = ({setGroup, existingGroups}) => {
     const [existingComponents, setExistingComponents] = useState([]);
     const [searchField, setSearchField] = useState("");
     const [appState, setAppState] = useState("")
-    const [editComponentName, setEditComponentName] = useState("")
     const [editComponentObj, setEditComponentObj] = useState();
-    const [componentEdit, setComponentEdit] = useState();
     const [on, setOn] = useState(false);
-
-
-    
+  
     useEffect(() => {
         postComponents(searchField, setExistingComponents);
     }, [existingComponents]);
@@ -25,7 +21,7 @@ export const ManageGroupsPod = ({setGroup, existingGroups}) => {
         
 
     const searchSubmitHandler = (e) => {
-        if(e.key == "Enter"){
+        if(e.key === "Enter"){
             e.preventDefault();
         }
     }
@@ -114,7 +110,7 @@ export const ManageGroupsPod = ({setGroup, existingGroups}) => {
             {/* edit component pod  */}
             
             {
-                (appState == "text" || appState == "Text") &&
+                (appState === "text" || appState === "Text") &&
                 <>
                     <div id="editExistPod">
 
@@ -123,7 +119,7 @@ export const ManageGroupsPod = ({setGroup, existingGroups}) => {
                 </>
             }
             {
-                (appState == "form" || appState == "Form") &&
+                (appState === "form" || appState === "Form") &&
                 <>
                     <div id="editExistPod">
 
@@ -132,7 +128,7 @@ export const ManageGroupsPod = ({setGroup, existingGroups}) => {
                 </>
             }
             {
-                (appState == "banner" || appState == "Banner") &&
+                (appState === "banner" || appState === "Banner") &&
                 <>
                     <div id="editExistPod">
 
@@ -141,7 +137,7 @@ export const ManageGroupsPod = ({setGroup, existingGroups}) => {
                 </>
             }
             {
-                (appState == "button" || appState == "Button") &&
+                (appState === "button" || appState === "Button") &&
                 <>
                     <div id="editExistPod">
 
@@ -150,7 +146,7 @@ export const ManageGroupsPod = ({setGroup, existingGroups}) => {
                 </>
             }
             {
-                (appState == "media" || appState == "Media") &&
+                (appState === "media" || appState === "Media") &&
                 <>
                     <div id="editExistPod">
 

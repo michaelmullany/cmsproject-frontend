@@ -103,7 +103,7 @@ export const postComponents = async (componentName, setter) => {
 export const deleteComponent = async (componentName) => {
     console.log(componentName);
     try {
-        const response = await fetch(`${process.env.REACT_APP_REST_API}component`, {
+        await fetch(`${process.env.REACT_APP_REST_API}component`, {
             method: "DELETE",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({componentName})

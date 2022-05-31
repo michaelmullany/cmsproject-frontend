@@ -8,7 +8,7 @@ export const AccessForm = ({setUser}) => {
 
     return(
         <div id="accessForm">
-            <img id="accessLogo" src={Logo} />
+            <img id="accessLogo" src={Logo} alt="Logo" />
             {needsAccount && <SignupForm setUser={setUser} setNeedsAccount={setNeedsAccount} />}
             {!needsAccount && <LoginForm setUser={setUser} setNeedsAccount={setNeedsAccount} />}
         </div>
