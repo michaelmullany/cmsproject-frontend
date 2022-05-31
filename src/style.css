@@ -274,6 +274,7 @@ width: 100%;
     justify-content: center;
     width: 100%;
     height: 92%;
+    padding: 12px;
 }
 
 .supportComponentContainer p, .supportComponentContainer a{
@@ -284,7 +285,7 @@ width: 100%;
     background-color: var(--light-shades);
     border-radius: 12px;
     height: 92%;
-    overflow-x: scroll;
+
 }
 #supportMainContainer {
     padding-left: 15px;

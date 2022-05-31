@@ -39,7 +39,7 @@ export const NewFormPod = ({ setAppState, existingGroups }) => {
         }
         console.log("fieldList is:")
         console.log({fieldList})
-        submitNewComponent(component);
+        submitNewComponent(component, setFeedback);
 
     }
 

@@ -8,7 +8,8 @@ export const Sidebar = ({ setAppState, user, setUser }) => {
     const createComponentRef = useRef(null);
     const modifyComponentRef = useRef(null);
     const groupsRef = useRef(null);   
-    const signOutRef = useRef(null);   
+    const signOutRef = useRef(null); 
+    const supportRef = useRef(null);  
     const[page, setPage] = useState(groupsRef)
 
     // ### hanlders for mouse entering, clicking and leaving ###
@@ -28,7 +29,9 @@ export const Sidebar = ({ setAppState, user, setUser }) => {
                 setAppState("ManageGroups")
             }   else if (param == signOutRef) {
                 setUser(null);
-            } 
+            } else if (param == supportRef) {
+                setAppState("Support")
+            }
             else {
                 setAppState("Welcome")
             }
@@ -83,7 +86,10 @@ export const Sidebar = ({ setAppState, user, setUser }) => {
                     </a>
                 </div>
                 <div id="supportIconContainer">
-                    <a href="#">
+                    <a href="#"
+                        ref={supportRef}
+                        
+                        onClick={onClickHandler(supportRef)}>
                         <img src={supportIcon} id="supportIcon"/>
                     </a>
                 </div>

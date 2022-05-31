@@ -11,6 +11,7 @@ import { NewFormPod } from './pods/NewFormPod'
 import { ManageGroupsPod } from "./pods/ManageGroupsPod";
 import { SelectedGroup } from "./pods/SelectedGroup";
 import { CreateComponentPod } from "./pods/CreateComponent";
+import { Support } from "./support"
 
 export const MainApp = ({ user, setUser }) => {
 
@@ -83,6 +84,10 @@ export const MainApp = ({ user, setUser }) => {
                 {
                     appState==="AddForm" && 
                     <NewFormPod setAppState={setAppState} existingGroups={existingGroups} />
+                } 
+                {
+                    appState==="Support" &&
+                    <Support />
                 }
             </main>
         </div>
