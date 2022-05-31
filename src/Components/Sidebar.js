@@ -14,22 +14,22 @@ export const Sidebar = ({ setAppState, user, setUser }) => {
 
     // ### hanlders for mouse entering, clicking and leaving ###
     const mouseEnterHandler = (param) => (e) => {  
-        if(page != param) {
+        if(page !== param) {
             param.current.style.backgroundColor = "#c5cfdd"
         }         
     }
     const onClickHandler = (param) => (e) => {        
         e.preventDefault();
-        if (page != param) {
+        if (page !== param) {
             page.current.style.backgroundColor = "#A4B4CA";
             param.current.style.backgroundColor = "#F3F7F8";
-            if (param == createComponentRef) {
+            if (param === createComponentRef) {
                 setAppState("CreateComponent");
-            } else if (param == modifyComponentRef) {
+            } else if (param === modifyComponentRef) {
                 setAppState("ManageGroups")
-            }   else if (param == signOutRef) {
+            }   else if (param === signOutRef) {
                 setUser(null);
-            } else if (param == supportRef) {
+            } else if (param === supportRef) {
                 setAppState("Support")
             }
             else {
@@ -39,14 +39,14 @@ export const Sidebar = ({ setAppState, user, setUser }) => {
         }
     }
     const mouseLeaveHandler = (param) => (e) => {
-        if (page != param) {        
+        if (page !== param) {        
         e.target.style.background="#A4B4CA"
         }
     }
     return (
         <div id="sidebar">
             <div id="logoContainer">
-                <a href="#" ><img src={Logo} id="logo"/></a>
+                <a href="#" ><img src={Logo} id="logo" alt="Logo"/></a>
             </div>
                 <div id="sidebarMenu">
                     <p id="usernameSidebar">{`Welcome ${user}`}</p>
@@ -90,7 +90,7 @@ export const Sidebar = ({ setAppState, user, setUser }) => {
                         ref={supportRef}
                         
                         onClick={onClickHandler(supportRef)}>
-                        <img src={supportIcon} id="supportIcon"/>
+                        <img src={supportIcon} id="supportIcon" alt="Support"/>
                     </a>
                 </div>
             </div>

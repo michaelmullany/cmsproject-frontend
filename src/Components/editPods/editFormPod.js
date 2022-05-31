@@ -35,6 +35,7 @@ export const EditFormPod = ({ setAppState, groupName, editComponentObj, existing
         e.preventDefault();
         let component = {
             _id: editComponentObj._id,
+            assignedToGroup: group,
             componentName: formName,
             component: "Form",
             formFields: fieldList            
