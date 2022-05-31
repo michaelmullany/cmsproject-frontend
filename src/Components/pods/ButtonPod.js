@@ -5,7 +5,7 @@ import { GroupField } from './Fields/GroupField';
 
 export const ButtonPod = ({ setAppState, existingGroups }) => {
 
-    const [group, setGroup] = useState(existingGroups[0]._id);
+    const [group, setGroup] = useState(existingGroups[0].groupName);
     const [buttonName, setButtonName] = useState();
     const [buttonType, setButtonType] = useState("apply");
     const [buttonUrl, setButtonUrl] = useState();

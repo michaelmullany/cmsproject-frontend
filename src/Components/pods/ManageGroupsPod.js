@@ -4,6 +4,7 @@ import {AiFillDelete} from "react-icons/ai";
 import { EditTextBoxPod } from '../editPods/EditTextBoxPod';
 import { EditFormPod } from '../editPods/EditFormPod';
 import { EditBannerPod } from '../editPods/EditBannerPod'
+import { EditMediaPod } from '../editPods/EditMediaPod'
 
 export const ManageGroupsPod = ({setGroup, existingGroups}) => {
     const [existingComponents, setExistingComponents] = useState([]);
@@ -136,6 +137,24 @@ export const ManageGroupsPod = ({setGroup, existingGroups}) => {
                     <div id="editExistPod">
 
                             <EditBannerPod setAppState={setAppState} editComponentObj={editComponentObj} setGroup={setGroup} existingGroups={existingGroups}  />
+                    </div>
+                </>
+            }
+            {
+                (appState == "button" || appState == "Button") &&
+                <>
+                    <div id="editExistPod">
+
+                            <EditBannerPod setAppState={setAppState} editComponentObj={editComponentObj} setGroup={setGroup} existingGroups={existingGroups}  />
+                    </div>
+                </>
+            }
+            {
+                (appState == "media" || appState == "Media") &&
+                <>
+                    <div id="editExistPod">
+
+                            <EditMediaPod setAppState={setAppState} editComponentObj={editComponentObj} setGroup={setGroup} existingGroups={existingGroups}  />
                     </div>
                 </>
             }

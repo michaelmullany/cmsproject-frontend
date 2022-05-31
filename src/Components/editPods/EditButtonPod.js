@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { CgArrowLeft } from "react-icons/cg";
-import { submitNewComponent } from '../../utils';
-import { GroupField } from './Fields/GroupField';
+import { updateComponent } from '../../utils';
+import { GroupFieldExisting } from './Fields/GroupField';
 
-export const ButtonPod = ({ setAppState, existingGroups }) => {
+export const EditButtonPod = ({ setAppState, existingGroups, editComponentObj }) => {
 
-    const [group, setGroup] = useState(existingGroups[0]._id);
-    const [buttonName, setButtonName] = useState();
-    const [buttonType, setButtonType] = useState("apply");
-    const [buttonUrl, setButtonUrl] = useState();
-    const [buttonSize, setButtonSize] = useState("small");
+    const [group, setGroup] = useState(editComponentObj.assignedToGroup);
+    const [buttonName, setButtonName] = useState(editComponentObj.componentName);
+    const [buttonType, setButtonType] = useState(editComponentObj.option);
+    const [buttonUrl, setButtonUrl] = useState(editComponentObj.src);
+    const [buttonSize, setButtonSize] = useState(editComponentObj.size);
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -30,25 +30,25 @@ export const ButtonPod = ({ setAppState, existingGroups }) => {
                 <CgArrowLeft className="back-arrow textButton" onClick={() => setAppState("CreateComponent")}/>
                 <h2>Button</h2>
                 <form onSubmit={submitHandler}>
-                    <GroupField setGroup={setGroup} existingGroups={existingGroups} />  
+                    <GroupFieldExisting setGroup={setGroup} existingGroups={existingGroups} editComponentObj={editComponentObj}/>  
                     <div className="inputGroup inputGroupLine">
                         <label htmlFor="buttonName">Name: </label>
-                        <input type="text" id="buttonName" name="buttonName" onChange={(e) => setButtonName(e.target.value)}/>
+                        <input type="text" id="buttonName" name="buttonName" onChange={(e) => setButtonName(e.target.value)} defaultValue={buttonName}/>
                     </div>
                     <div className="inputGroup inputGroupLine">
                         <label htmlFor="buttonType">Type: </label>
-                        <select id="buttonType" name="buttonType" size="1" onChange={(e) => setButtonType(e.target.value)}>
+                        <select id="buttonType" name="buttonType" size="1" onChange={(e) => setButtonType(e.target.value)} defaultValue={buttonType}>
                             <option value="apply">Apply</option>
                             <option value="info">Info</option>
                         </select>
                     </div>
                     <div className="inputGroup inputGroupLine">
                         <label htmlFor="buttonSource">URL: </label>
-                        <input type="text" id="buttonSource" name="buttonSource" onChange={(e) => setButtonUrl(e.target.value)}/>
+                        <input type="text" id="buttonSource" name="buttonSource" onChange={(e) => setButtonUrl(e.target.value)} defaultValue={buttonUrl}/>
                     </div>
                     <div className="inputGroup inputGroupLine">
                         <label htmlFor="buttonSize">Type: </label>
-                        <select id="buttonSize" name="buttonSize" size="1" onChange={(e) => setButtonSize(e.target.value)}>
+                        <select id="buttonSize" name="buttonSize" size="1" onChange={(e) => setButtonSize(e.target.value)} defaultValue={buttonSize}>
                             <option value="small">Small</option>
                             <option value="medium">Medium</option>
                             <option value="large">Large</option>
