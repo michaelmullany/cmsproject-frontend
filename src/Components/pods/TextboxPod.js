@@ -14,7 +14,7 @@ export const TextboxPod = ({ setAppState, existingGroups }) => {
         let component = {
             assignedToGroup: group,
             componentName: textboxName,
-            component: "text",
+            component: "Text",
             text: htmlContent,
         }
         submitNewComponent(component);

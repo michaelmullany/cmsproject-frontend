@@ -16,7 +16,7 @@ export const ButtonPod = ({ setAppState, existingGroups }) => {
         let component = {
             assignedToGroup: group,
             componentName: buttonName,
-            component: "button",
+            component: "Button",
             option: buttonType,
             src: buttonUrl,
             size: buttonSize

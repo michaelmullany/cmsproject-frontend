@@ -15,7 +15,7 @@ export const BannerPod = ({ setAppState, existingGroups }) => {
         let component = {
             assignedToGroup: group,
             componentName: bannerName,
-            component: "banner",
+            component: "Banner",
             option: bannerType,
             text: bannerText,
         }
