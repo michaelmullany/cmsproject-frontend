@@ -9,38 +9,43 @@ import { GroupFieldExisting } from '../pods/Fields/GroupFieldExisting';
 export const EditFormPod = ({ setAppState, groupName, editComponentObj, existingGroups }) => {
 
     const [formName, setFormName] = useState(editComponentObj.componentName);
-    const [fieldName, setFieldName] = useState("blank");
+    const [fieldName, setFieldName] = useState(editComponentObj.fieldName);
     const [fieldType, setFieldType] = useState("field");
-    const [fieldList, setFieldList] = useState([]);
-    const [group, setGroup] = useState();
+    const [fieldList, setFieldList] = useState(editComponentObj.formFields);
+    const [group, setGroup] = useState(editComponentObj.groupName);
 
     const addFieldHandler = (e) => {
+   
         e.preventDefault();
-        console.log(fieldName)
-        console.log(fieldType)
+        
         let tempObj = {
-            name: fieldName,
-            type: fieldType
+            fieldName: fieldName,
+            fieldType: fieldType
         }
+
+
         let tempFieldListArray = [...fieldList];
         tempFieldListArray.push(tempObj)
-        setFieldList(tempFieldListArray)
+
+        setFieldList(tempFieldListArray)    
+        // console.log(fieldList)
     }
 
-    const submitHandler = (obj) => (e) => {
+    const submitHandler = (e) => {
         e.preventDefault();
         let component = {
-            
-            // componentName: formName,
-            // component: "Form",
-            // formFields: fieldList,
+            _id: editComponentObj._id,
+            componentName: formName,
+            component: "Form",
+            formFields: fieldList            
         }
+        // console.log(fieldList)
         updateComponent(component);
         setAppState("")
     }
 
-    const deleteButtonHandler = (x) => (e) => {
-        deleteComponent(x.name)
+    const deleteButtonHandler = (x) => () => {
+        deleteComponent(x.componentName)
     }
 
     const formButtonHandler = (param, index) => {
@@ -115,6 +120,31 @@ export const EditFormPod = ({ setAppState, groupName, editComponentObj, existing
                             if (index === 0) {
                                 return <tr key={index}>
                                     <td><button className="formButton" onClick={() => formButtonHandler("down", index)}><FiChevronDown /></button></td>
+                                    <td><p>{x.fieldName}</p></td><td><p>{x.fieldType}</p></td><td><button className="noStyleButton" onClick={deleteButtonHandler(x)}><AiFillDelete /></button></td>
+                                    </tr>
+                            } else if (index === (fieldList.length-1)) {                                
+                                return <tr key={index}>
+                                    <td><button className="formButton" onClick={() => formButtonHandler("up", index)}><FiChevronUp /></button></td>
+                                    <td><p>{x.fieldName}</p></td><td><p>{x.fieldType}</p></td><td><button className="noStyleButton" onClick={deleteButtonHandler(x)}> <AiFillDelete /></button></td>
+                                    </tr>
+                            } else {
+                            return <tr key={index}>
+                                
+                                <td><div className="dualButtonContainer">
+                                        <button className="formButton dualButtons" onClick={() => formButtonHandler("up", index)}><FiChevronUp /></button>
+                                        <button className="formButton dualButtons" onClick={() => formButtonHandler("down", index)}><FiChevronDown /></button>
+                                </div></td>
+                                <td><p>{x.fieldName}</p></td><td><p>{x.fieldType}</p></td><td><button className="noStyleButton" onClick={deleteButtonHandler(x)}> <AiFillDelete /></button></td>
+                                </tr> 
+                            }                            
+                        })}
+
+
+
+                        {/* {fieldList.map((x,index) => {
+                            if (index === 0) {
+                                return <tr key={index}>
+                                    <td><button className="formButton" onClick={() => formButtonHandler("down", index)}><FiChevronDown /></button></td>
                                     <td><p>{x.name}</p></td><td><p>{x.type}</p></td><td><button className="noStyleButton" onClick={deleteButtonHandler(x)}><AiFillDelete /></button></td>
                                     </tr>
                             } else if (index === (fieldList.length-1)) {                                
@@ -131,9 +161,10 @@ export const EditFormPod = ({ setAppState, groupName, editComponentObj, existing
                                 </div></td>
                                 <td><p>{x.name}</p></td><td><p>{x.type}</p></td><td><button className="noStyleButton" onClick={deleteButtonHandler(x)}> <AiFillDelete /></button></td>
                                 </tr> 
-                            }
-                            
-                        })}
+                            }                            
+                        })} */}
+
+
                         </tbody>
                         </table>
                         
