@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getGroupsList, updateGroup, deleteGroup } from "../../utils/mmindex"
+import { getGroupsList, updateGroup, deleteGroup } from "../../utils/index"
 import { CgArrowLeft } from "react-icons/cg";
 
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getGroupsList } from "../utils/mmindex"
+import { getGroupsList } from "../utils/index"
 import { Sidebar } from "./Sidebar"
 import { RecentGroups } from "./pods/recentGroups"
 import { AddGroup } from './pods/AddGroup'
@@ -60,7 +60,7 @@ export const MainApp = () => {
                 }
                 {
                     appState==="ManageGroups" &&
-                    <ManageGroupsPod setAppState={setAppState}/>
+                    <ManageGroupsPod setAppState={setAppState} existingGroups={existingGroups} />
                 }
                 {
                     appState==="AddTextbox" &&

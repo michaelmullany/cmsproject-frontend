@@ -1,5 +1,5 @@
 import { AiFillDelete } from "react-icons/ai";
-import { deleteGroup, getGroupsList } from "../../utils/mmindex";
+import { deleteGroup, getGroupsList } from "../../utils/index";
 
 export const RecentGroups = ({ existingGroups, setExistingGroups, setSelectedGroup }) => {
 

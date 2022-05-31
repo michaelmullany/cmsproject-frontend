@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CgArrowLeft } from "react-icons/cg";
-import { submitNewGroup, getGroupsList } from "../../utils/mmindex";
+import { submitNewGroup, getGroupsList } from "../../utils/index";
 import { Feedback } from "./Feedback";
 
 export const AddGroup = ({ groupName, setGroupName, setExistingGroups, setAppState }) => {

@@ -3,14 +3,12 @@ import { postComponents, deleteComponent } from "../../utils";
 import {AiFillDelete} from "react-icons/ai";
 import { EditTextBoxPod, editTextBoxPod } from '../editPods/EditTextBoxPod';
 
-export const ManageGroupsPod = () => {
+export const ManageGroupsPod = ({setGroup, existingGroups}) => {
     const [existingComponents, setExistingComponents] = useState([]);
     const [searchField, setSearchField] = useState("");
     const [appState, setAppState] = useState("")
     const [editComponentName, setEditComponentName] = useState("")
     const [editComponentObj, setEditComponentObj] = useState()
-
-    
     
     useEffect(() => {
         postComponents(searchField, setExistingComponents);
@@ -106,7 +104,7 @@ export const ManageGroupsPod = () => {
             {
                 (appState == "text") &&
                 <> 
-                    <EditTextBoxPod setAppState={setAppState} editComponentObj={editComponentObj}/>
+                    <EditTextBoxPod setAppState={setAppState} editComponentObj={editComponentObj} setGroup={setGroup} existingGroups={existingGroups} />
                 </>     
             }
             {/* {
